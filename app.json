@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./public/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "pizzahall-proj",
     "splash": {
       "image": "./public/splash.png",
       "resizeMode": "contain",
