@@ -1,7 +1,7 @@
 import { Pressable, Text, TextInput, View } from "react-native";
 import authFormStyles from "../authFormStyles";
 
-export default function LoginForm() {
+export default function LoginForm({toogleLayout}) {
 	return (
 		<View style={authFormStyles.formContainer}>
 			<View style={authFormStyles.titleContainer}>
@@ -38,6 +38,14 @@ export default function LoginForm() {
                               Conectar-se
                          </Text>
                     </Pressable>
+			</View>
+			<View style={authFormStyles.anchorsContainer}>
+				<Pressable>
+					<Text style={authFormStyles.anchors}>Esqueci a senha</Text>
+				</Pressable>
+				<Pressable onPress={toogleLayout}>
+					<Text style={authFormStyles.anchors}>Criar uma conta</Text>
+				</Pressable>
 			</View>
 		</View>
 	);

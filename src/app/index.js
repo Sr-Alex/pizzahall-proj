@@ -10,6 +10,9 @@ export default function Page() {
 			<Link navigate href={"/AuthPage"} style={styles.anchors}>
 				Ir para tela de login
 			</Link>
+			<Link navigate href={"/HomePage"} style={styles.anchors}>
+				Ir para tela Home
+			</Link>
 		</View>
 	);
 }
@@ -33,8 +36,10 @@ const styles = StyleSheet.create({
 	},
 
 	anchors: {
-		textDecorationLine: "underline",
+		marginVertical: 8,
+
 		fontSize: 20,
+		textDecorationLine: "underline",
 		color: globalStyles.colors.black
 	}
 });

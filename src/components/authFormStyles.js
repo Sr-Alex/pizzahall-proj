@@ -14,18 +14,20 @@ export default authFormStyles = StyleSheet.create({
 	},
 
 	formTitle: {
-		textAlign: "center",
-
+		marginBottom: 8,
+		
 		fontSize: 24,
 		fontWeight: "bold",
+		textAlign: "center",
 		color: globalStyles.colors.darkPurple,
 	},
 
 	formSubtitle: {
-		textAlign: "center",
-
+		marginBottom: 8,
+		
 		fontSize: 16,
 		fontWeight: "600",
+		textAlign: "center",
 		color: globalStyles.colors.black,
 	},
 
@@ -73,5 +75,21 @@ export default authFormStyles = StyleSheet.create({
 		fontWeight: "bold",
 
 		color: globalStyles.colors.snowWhite,
+	},
+
+	anchorsContainer: {
+		flexDirection: "row",
+
+		justifyContent: "space-between",
+
+		marginTop: 16,
+	},
+
+	anchors: {
+		fontSize: 16,
+		fontWeight: "600",
+		textDecorationLine: "underline",
+
+		color: globalStyles.colors.black,
 	},
 });
