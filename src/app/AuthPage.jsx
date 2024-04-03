@@ -19,7 +19,7 @@ export default function AuthPage() {
 			<View style={styles.imgContainer}>
 				<Image
 					source={require("../assets/img/pizza.jpg")}
-					style={styles.img}
+					style={globalStyles.components.img}
 				/>
 			</View>
 			<View style={styles.formsContainer}>
@@ -48,8 +48,4 @@ const styles = StyleSheet.create({
 		height: 400,
 	},
 
-	img: {
-		width: "100%",
-		height: "100%",
-	},
 });

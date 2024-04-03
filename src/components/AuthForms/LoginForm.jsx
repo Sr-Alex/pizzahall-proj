@@ -1,5 +1,5 @@
 import { Pressable, Text, TextInput, View } from "react-native";
-import authFormStyles from "../authFormStyles";
+import authFormStyles from "./authFormStyles";
 
 export default function LoginForm({toogleLayout}) {
 	return (

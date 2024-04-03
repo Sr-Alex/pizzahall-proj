@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import globalStyles from "../globalStyles";
+import globalStyles from "../../globalStyles";
 
 export default authFormStyles = StyleSheet.create({
 	formContainer: {
