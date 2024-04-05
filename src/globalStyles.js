@@ -26,5 +26,20 @@ export default globalStyles = {
 
 			objectFit: "cover",
 		},
+		centeredBorder: {
+			alignSelf: "center",
+
+			width: "50%",
+			height: 1,
+		},
+
+		scroller: {
+			width: "100%",
+			height: "100%",
+			gap: 8,
+
+			overflow: "scroll",
+			
+		}
 	}),
 };

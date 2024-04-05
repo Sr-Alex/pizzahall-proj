@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import globalStyles from "../globalStyles";
+import globalStyles from "./../globalStyles";
 
 import MapPreview from "../components/Maps/MapPreview";
 import StoresList from "../components/Stores/StoresList";
+import MainNavBar from "../components/NavBar/MainNavBar";
 
 export default function HomePage() {
 	return (
@@ -14,6 +15,7 @@ export default function HomePage() {
 				<MapPreview />
 				<StoresList />
 			</View>
+			<MainNavBar />
 		</SafeAreaView>
 	);
 }
@@ -45,7 +47,7 @@ const styles = StyleSheet.create({
 		gap: 16,
 
 		width: "90%",
-		height: "85%",
+		height: "90%",
 		paddingTop: 8,
 		paddingBottom: 16,
 

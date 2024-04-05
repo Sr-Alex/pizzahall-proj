@@ -1,20 +1,20 @@
 import { StyleSheet } from "react-native";
 
-import globalStyles from "../../globalStyles";
+import globalStyles from './../../globalStyles';
 
 export default storeStyles = StyleSheet.create({
 	StoreList: {
 		width: "80%",
 		height: 384,
-		gap: 8,
-
-		overflow: "scroll",
+		paddingVertical: 16,
 
 		backgroundColor: globalStyles.colors.offWhite,
 		borderRadius: 16,
 	},
 
 	StoreMiniature: {
+		position: "relative",
+
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
@@ -24,9 +24,6 @@ export default storeStyles = StyleSheet.create({
 		paddingHorizontal: 8,
 
 		backgroundColor: globalStyles.colors.offWhite,
-
-		borderBottomWidth: 1,
-		borderColor: globalStyles.colors.black,
 	},
 
 	miniatureTitle: {
@@ -44,5 +41,5 @@ export default storeStyles = StyleSheet.create({
 
 		fontSize: 12,
 		textAlign: "right",
-     },
+	},
 });
