@@ -10,7 +10,7 @@ export default function Page() {
 			<Link navigate href={"/AuthPage"} style={styles.anchors}>
 				Ir para tela de login
 			</Link>
-			<Link navigate href={"/HomePage"} style={styles.anchors}>
+			<Link navigate href={"/home/MapLayout"} style={styles.anchors}>
 				Ir para tela Home
 			</Link>
 		</View>
