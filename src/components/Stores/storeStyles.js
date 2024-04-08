@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import globalStyles from './../../globalStyles';
+import globalStyles from "./../../globalStyles";
 
 export default storeStyles = StyleSheet.create({
 	StoreList: {
@@ -12,9 +12,14 @@ export default storeStyles = StyleSheet.create({
 		borderRadius: 16,
 	},
 
-	StoreMiniature: {
-		position: "relative",
+	storeName: {
+		fontSize: 20,
+		fontWeight: "bold",
 
+		color: globalStyles.colors.gray,
+	},
+
+	StoreMiniature: {
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",

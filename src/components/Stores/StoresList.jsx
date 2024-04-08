@@ -5,12 +5,12 @@ import storeStyles from "./storeStyles";
 
 import StoreMiniature from "./StoreMiniature";
 
-export default function StoresList() {
+export default function StoresList({ stores = [] }) {
 	return (
 		<View style={storeStyles.StoreList}>
 			<ScrollView style={globalStyles.components.scroller}>
-				{Array.from({ length: 6 }).map((_, index) => (
-					<StoreMiniature key={index} storeObject={{ index }} />
+				{stores.map((store, index) => (
+					<StoreMiniature key={index} store={store} />
 				))}
 			</ScrollView>
 		</View>

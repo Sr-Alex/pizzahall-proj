@@ -1,13 +1,13 @@
 import { StyleSheet, View } from "react-native";
 
-import MapPreview from "../../components/Maps/MapPreview";
-import StoresList from "../../components/Stores/StoresList";
+import globalStyles from "../../globalStyles";
 
-export default function MapLayout() {
+import OrdersList from "../../components/Orders/OrdersList";
+
+export default function OrdersLayout() {
 	return (
 		<View style={styles.contentContainer}>
-			<MapPreview />
-			<StoresList stores={Array.from({ length: 6 })} />
+			<OrdersList userOrders={Array.from({ length: 6 })} />
 		</View>
 	);
 }
@@ -15,11 +15,10 @@ export default function MapLayout() {
 const styles = StyleSheet.create({
 	contentContainer: {
 		alignItems: "center",
-		gap: 16,
 
-		width: "90%",
-		height: "90%",
-		paddingTop: 8,
+		width: "100%",
+		height: "100%",
+		paddingTop: 32,
 		paddingBottom: 16,
 
 		backgroundColor: globalStyles.colors.orange,
