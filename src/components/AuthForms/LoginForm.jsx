@@ -19,6 +19,7 @@ export default function LoginForm({toogleLayout}) {
                               autoComplete="email"
 						returnKeyType="next"
                               multiline={false}
+						placeholder="exemplo@gmail.com"
 						style={authFormStyles.formInput}
 					/>
 				</View>
@@ -30,6 +31,7 @@ export default function LoginForm({toogleLayout}) {
 						returnKeyType="done"
                               secureTextEntry={true}
                               multiline={false}
+						placeholder="**********"
 						style={authFormStyles.formInput}
 					/>
 				</View>

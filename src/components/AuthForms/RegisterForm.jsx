@@ -15,6 +15,7 @@ export default function RegisterForm({toogleLayout}) {
 						autoComplete="name"
 						returnKeyType="next"
 						multiline={false}
+						placeholder="Nome Completo"
 						style={authFormStyles.formInput}
 					/>
 				</View>
@@ -26,6 +27,7 @@ export default function RegisterForm({toogleLayout}) {
 						autoComplete="email"
 						returnKeyType="next"
 						multiline={false}
+						placeholder="exemplo@gmail.com"
 						style={authFormStyles.formInput}
 					/>
 				</View>
@@ -37,6 +39,7 @@ export default function RegisterForm({toogleLayout}) {
 						returnKeyType="done"
 						secureTextEntry={true}
 						multiline={false}
+						placeholder="**********"
 						style={authFormStyles.formInput}
 					/>
 				</View>
