@@ -5,7 +5,7 @@ import menuStyles from "./menuStyles";
 import storeStyles from "../Stores/storeStyles";
 
 import PizzaLogo from "../../assets/img/pizza.jpg";
-import ProductPager from "./ProductPager";
+import ProductSelector from "./../Product/ProductSelector";
 
 export default function MenuContainer({ store = {} }) {
 	return (
@@ -19,9 +19,7 @@ export default function MenuContainer({ store = {} }) {
 				</View>
 				<Text style={storeStyles.storeName}>Nome da loja</Text>
 			</View>
-			<View style={menuStyles.productSelector}>
-				<ProductPager />
-			</View>
+			<ProductSelector products={Array.from({ length: 4 })} />
 		</View>
 	);
 }

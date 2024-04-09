@@ -22,18 +22,4 @@ export default menuStyles = StyleSheet.create({
 		width: "100%",
 		height: 80,
 	},
-
-	ProductPager: {
-		width: 256,
-		height: 256,
-	},
-
-	productView: {
-		width: 256,
-		height: 256,
-
-		overflow: "hidden",
-
-		borderRadius: 256,
-	},
 });
