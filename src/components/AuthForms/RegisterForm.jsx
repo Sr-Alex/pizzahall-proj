@@ -1,7 +1,37 @@
 import { Pressable, Text, TextInput, View } from "react-native";
 import authFormStyles from "./authFormStyles";
+import SubmitButton from "../Inputs/SubmitButton";
+import { useEffect, useState } from "react";
+import { validateRegister } from "../../services/validadores";
+import { registerUser } from "../../services/api";
 
-export default function RegisterForm({toogleLayout}) {
+export default function RegisterForm({ toogleLayout }) {
+	const [registerData, setRegisterData] = useState({
+		nome: "",
+		email: "",
+		password: "",
+	});
+	const [canSubmit, setCanSubmit] = useState(true);
+
+	const changeData = (input, value) => {
+		setRegisterData({ ...registerData, [input]: value });
+	};
+
+	const doRegister = async () => {
+		if (!canSubmit) return;
+
+		console.log("tentando registrar..");
+
+		await registerUser(registerData);
+	};
+
+	useEffect(() => {
+		const func = async () => {
+			setCanSubmit(validateRegister(registerData));
+		};
+		func();
+	}, [registerData]);
+
 	return (
 		<View style={authFormStyles.formContainer}>
 			<View>
@@ -16,6 +46,7 @@ export default function RegisterForm({toogleLayout}) {
 						returnKeyType="next"
 						multiline={false}
 						placeholder="Nome Completo"
+						onChangeText={(value) => changeData("nome", value)}
 						style={authFormStyles.formInput}
 					/>
 				</View>
@@ -28,6 +59,7 @@ export default function RegisterForm({toogleLayout}) {
 						returnKeyType="next"
 						multiline={false}
 						placeholder="exemplo@gmail.com"
+						onChangeText={(value) => changeData("email", value)}
 						style={authFormStyles.formInput}
 					/>
 				</View>
@@ -40,14 +72,18 @@ export default function RegisterForm({toogleLayout}) {
 						secureTextEntry={true}
 						multiline={false}
 						placeholder="**********"
+						onChangeText={(value) => changeData("password", value)}
 						style={authFormStyles.formInput}
 					/>
 				</View>
-				<Pressable onPress={() => {}} style={authFormStyles.formButton}>
+				<SubmitButton
+					disabled={!canSubmit}
+					onPress={doRegister}
+					style={authFormStyles.formButton}>
 					<Text style={authFormStyles.formButtonText}>
 						Cadastrar-se
 					</Text>
-				</Pressable>
+				</SubmitButton>
 			</View>
 			<View style={authFormStyles.anchorsContainer}>
 				<Pressable onPress={toogleLayout}>

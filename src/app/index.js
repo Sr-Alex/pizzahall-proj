@@ -7,10 +7,10 @@ export default function Page() {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>Protótipo Pizzahall</Text>
-			<Link navigate href={"/AuthPage"} style={styles.anchors}>
+			<Link navigate href={"/auth"} style={styles.anchors}>
 				Ir para tela de login
 			</Link>
-			<Link navigate href={"/home/MapLayout"} style={styles.anchors}>
+			<Link navigate href={"(tabs)"} style={styles.anchors}>
 				Ir para tela Home
 			</Link>
 		</View>
@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
 
 		fontSize: 20,
 		textDecorationLine: "underline",
-		color: globalStyles.colors.black
-	}
+		color: globalStyles.colors.black,
+	},
 });

@@ -2,10 +2,12 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 
-import globalStyles from "../globalStyles";
+import globalStyles from "./../../globalStyles";
 
-import LoginForm from "../components/AuthForms/LoginForm";
-import RegisterForm from "../components/AuthForms/RegisterForm";
+import RegisterForm from "./../../components/AuthForms/RegisterForm";
+import LoginForm from "./../../components/AuthForms/LoginForm";
+
+import PizzaLogo from "../../assets/img/pizza.jpg";
 
 export default function AuthPage() {
 	const [isLoginLayout, setisLoginLayout] = useState(true);
@@ -17,10 +19,7 @@ export default function AuthPage() {
 	return (
 		<SafeAreaView style={styles.AuthPage}>
 			<View style={styles.imgContainer}>
-				<Image
-					source={require("../assets/img/pizza.jpg")}
-					style={globalStyles.components.img}
-				/>
+				<Image source={PizzaLogo} style={globalStyles.components.img} />
 			</View>
 			<ScrollView automaticallyAdjustKeyboardInsets>
 				{isLoginLayout ? (

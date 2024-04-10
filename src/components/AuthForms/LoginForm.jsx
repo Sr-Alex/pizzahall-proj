@@ -1,7 +1,34 @@
 import { Pressable, Text, TextInput, View } from "react-native";
+import { useEffect, useState } from "react";
+
 import authFormStyles from "./authFormStyles";
 
-export default function LoginForm({toogleLayout}) {
+import SubmitButton from "../Inputs/SubmitButton";
+
+import { validateLogin } from "./../../services/validadores";
+import { loginUser } from "./../../services/api";
+
+export default function LoginForm({ toogleLayout }) {
+	const [loginData, setLoginData] = useState({ email: "", password: "" });
+	const [canSubmit, setCanSubmit] = useState(false);
+
+	const changeData = (input, value) => {
+		setLoginData({ ...loginData, [input]: value });
+	};
+
+	const doLogin = async () => {
+		if (!canSubmit) return;
+
+		await loginUser(loginData);
+	};
+
+	useEffect(() => {
+		const func = async () => {
+			setCanSubmit(validateLogin(true));
+		};
+		func();
+	}, [loginData]);
+
 	return (
 		<View style={authFormStyles.formContainer}>
 			<View style={authFormStyles.titleContainer}>
@@ -15,31 +42,33 @@ export default function LoginForm({toogleLayout}) {
 					<Text style={authFormStyles.inputLabel}>Email</Text>
 					<TextInput
 						keyboardType="email-address"
-                              textContentType="emailAddress"
-                              autoComplete="email"
+						textContentType="emailAddress"
+						autoComplete="email"
 						returnKeyType="next"
-                              multiline={false}
 						placeholder="exemplo@gmail.com"
+						multiline={false}
+						onChangeText={(value) => changeData("email", value)}
 						style={authFormStyles.formInput}
 					/>
 				</View>
 				<View>
-					<Text style={authFormStyles.inputLabel}>Senha</Text>
+					<Text style={authFormStyles.inputLabel}>password</Text>
 					<TextInput
-                              textContentType="password"
-                              autoComplete="password"
+						textContentType="password"
+						autoComplete="password"
 						returnKeyType="done"
-                              secureTextEntry={true}
-                              multiline={false}
 						placeholder="**********"
+						secureTextEntry={true}
+						multiline={false}
+						onChangeText={(value) => changeData("password", value)}
 						style={authFormStyles.formInput}
 					/>
 				</View>
-                    <Pressable onPress={() => {}} style={authFormStyles.formButton}>
-                         <Text style={authFormStyles.formButtonText}>
-                              Conectar-se
-                         </Text>
-                    </Pressable>
+				<SubmitButton onPress={doLogin}>
+					<Text style={authFormStyles.formButtonText}>
+						Conectar-se
+					</Text>
+				</SubmitButton>
 			</View>
 			<View style={authFormStyles.anchorsContainer}>
 				<Pressable>

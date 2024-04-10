@@ -58,17 +58,6 @@ export default authFormStyles = StyleSheet.create({
 		borderRadius: 16,
 	},
 
-	formButton: {
-		justifyContent: "center",
-
-		width: 224,
-		height: 48,
-		marginTop: 20,
-
-		backgroundColor: globalStyles.colors.orange,
-		borderRadius: 8,
-	},
-
 	formButtonText: {
 		textAlign: "center",
 		fontSize: 20,
