@@ -1,33 +1,52 @@
-import { Pressable, Text, TextInput, View } from "react-native";
-import { useEffect, useState } from "react";
-
-import authFormStyles from "./authFormStyles";
-
-import SubmitButton from "../Inputs/SubmitButton";
+import {
+	ActivityIndicator,
+	Pressable,
+	Text,
+	TextInput,
+	View,
+} from "react-native";
+import { useContext, useEffect, useState } from "react";
 
 import { validateLogin } from "./../../services/validadores";
 import { loginUser } from "./../../services/api";
 
-export default function LoginForm({ toogleLayout }) {
+import globalStyles from "../../globalStyles";
+import authFormStyles from "./authFormStyles";
+
+import SubmitButton from "../Inputs/SubmitButton";
+import UserAuthContext from "./../../contexts/UserAuthContext";
+import { router } from "expo-router";
+import PasswordInput from "./PasswordInput";
+
+export default function LoginForm({ toogleLayout = () => {} }) {
+	const { setUserAuth } = useContext(UserAuthContext);
+
 	const [loginData, setLoginData] = useState({ email: "", password: "" });
-	const [canSubmit, setCanSubmit] = useState(false);
+
+	const [isLoading, setIsLoading] = useState(false);
 
 	const changeData = (input, value) => {
 		setLoginData({ ...loginData, [input]: value });
 	};
 
 	const doLogin = async () => {
-		if (!canSubmit) return;
+		if (!validateLogin(loginData.email, loginData.password)) return;
+		setIsLoading(true);
 
-		await loginUser(loginData);
+		const response = await loginUser(loginData);
+
+		setIsLoading(false);
+
+		if (!response || typeof response !== "object")
+			return console.warn(response);
+
+		setUserAuth({
+			id: await response["id"],
+			token: await response["token"],
+		});
+
+		router.replace("(app)");
 	};
-
-	useEffect(() => {
-		const func = async () => {
-			setCanSubmit(validateLogin(true));
-		};
-		func();
-	}, [loginData]);
 
 	return (
 		<View style={authFormStyles.formContainer}>
@@ -47,27 +66,26 @@ export default function LoginForm({ toogleLayout }) {
 						returnKeyType="next"
 						placeholder="exemplo@gmail.com"
 						multiline={false}
+						autoCapitalize="none"
 						onChangeText={(value) => changeData("email", value)}
 						style={authFormStyles.formInput}
 					/>
 				</View>
 				<View>
-					<Text style={authFormStyles.inputLabel}>password</Text>
-					<TextInput
-						textContentType="password"
-						autoComplete="password"
-						returnKeyType="done"
-						placeholder="**********"
-						secureTextEntry={true}
-						multiline={false}
-						onChangeText={(value) => changeData("password", value)}
-						style={authFormStyles.formInput}
-					/>
+					<Text style={authFormStyles.inputLabel}>Senha</Text>
+					<PasswordInput field="password" changeData={changeData} />
 				</View>
-				<SubmitButton onPress={doLogin}>
-					<Text style={authFormStyles.formButtonText}>
-						Conectar-se
-					</Text>
+				<SubmitButton disabled={isLoading} onPress={doLogin}>
+					{isLoading ? (
+						<ActivityIndicator
+							size={"large"}
+							color={globalStyles.colors.offWhite}
+						/>
+					) : (
+						<Text style={authFormStyles.formButtonText}>
+							Conectar-se
+						</Text>
+					)}
 				</SubmitButton>
 			</View>
 			<View style={authFormStyles.anchorsContainer}>

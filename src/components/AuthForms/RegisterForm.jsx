@@ -1,36 +1,63 @@
-import { Pressable, Text, TextInput, View } from "react-native";
+import {
+	ActivityIndicator,
+	Pressable,
+	Text,
+	TextInput,
+	View,
+} from "react-native";
+import { useContext, useState } from "react";
+import { router } from "expo-router";
+import UserAuthContext from "./../../contexts/UserAuthContext";
+
+import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
-import SubmitButton from "../Inputs/SubmitButton";
-import { useEffect, useState } from "react";
+
 import { validateRegister } from "../../services/validadores";
 import { registerUser } from "../../services/api";
 
+import SubmitButton from "../Inputs/SubmitButton";
+import PasswordInput from "./PasswordInput";
+
 export default function RegisterForm({ toogleLayout }) {
+	const { setUserAuth } = useContext(UserAuthContext);
+
 	const [registerData, setRegisterData] = useState({
 		nome: "",
 		email: "",
 		password: "",
+		passwordconfirm: "",
 	});
-	const [canSubmit, setCanSubmit] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const changeData = (input, value) => {
 		setRegisterData({ ...registerData, [input]: value });
 	};
 
 	const doRegister = async () => {
-		if (!canSubmit) return;
+		if (
+			!validateRegister(
+				registerData.nome,
+				registerData.email,
+				registerData.password,
+				registerData.passwordconfirm
+			)
+		)
+			return;
+		setIsLoading(true);
 
-		console.log("tentando registrar..");
+		const response = await registerUser(registerData);
 
-		await registerUser(registerData);
+		setIsLoading(false);
+		if (!response || typeof response !== "object")
+			return console.warn(response);
+
+		setUserAuth({
+			id: await response["id"],
+			token: await response["token"],
+		});
+
+		router.replace("(app)");
 	};
-
-	useEffect(() => {
-		const func = async () => {
-			setCanSubmit(validateRegister(registerData));
-		};
-		func();
-	}, [registerData]);
 
 	return (
 		<View style={authFormStyles.formContainer}>
@@ -58,6 +85,7 @@ export default function RegisterForm({ toogleLayout }) {
 						autoComplete="email"
 						returnKeyType="next"
 						multiline={false}
+						autoCapitalize="none"
 						placeholder="exemplo@gmail.com"
 						onChangeText={(value) => changeData("email", value)}
 						style={authFormStyles.formInput}
@@ -65,24 +93,31 @@ export default function RegisterForm({ toogleLayout }) {
 				</View>
 				<View>
 					<Text style={authFormStyles.inputLabel}>Senha</Text>
-					<TextInput
-						textContentType="password"
-						autoComplete="password"
-						returnKeyType="done"
-						secureTextEntry={true}
-						multiline={false}
-						placeholder="**********"
-						onChangeText={(value) => changeData("password", value)}
-						style={authFormStyles.formInput}
+					<PasswordInput field="password" changeData={changeData} />
+				</View>
+				<View>
+					<Text style={authFormStyles.inputLabel}>
+						Confirmar senha
+					</Text>
+					<PasswordInput
+						field="passwordconfirm"
+						changeData={changeData}
 					/>
 				</View>
 				<SubmitButton
-					disabled={!canSubmit}
+					disabled={isLoading}
 					onPress={doRegister}
 					style={authFormStyles.formButton}>
-					<Text style={authFormStyles.formButtonText}>
-						Cadastrar-se
-					</Text>
+					{isLoading ? (
+						<ActivityIndicator
+							size={"large"}
+							color={globalStyles.colors.offWhite}
+						/>
+					) : (
+						<Text style={authFormStyles.formButtonText}>
+							Cadastrar-se
+						</Text>
+					)}
 				</SubmitButton>
 			</View>
 			<View style={authFormStyles.anchorsContainer}>

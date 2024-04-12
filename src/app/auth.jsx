@@ -2,20 +2,19 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 
-import globalStyles from "./../../globalStyles";
+import globalStyles from "../globalStyles";
 
-import RegisterForm from "./../../components/AuthForms/RegisterForm";
-import LoginForm from "./../../components/AuthForms/LoginForm";
+import RegisterForm from "../components/AuthForms/RegisterForm";
+import LoginForm from "../components/AuthForms/LoginForm";
 
-import PizzaLogo from "../../assets/img/pizza.jpg";
+import PizzaLogo from "../assets/img/pizza.jpg";
 
-export default function AuthPage() {
+export default function Auth() {
 	const [isLoginLayout, setisLoginLayout] = useState(true);
 
 	const toogleLayout = () => {
 		setisLoginLayout(!isLoginLayout);
 	};
-
 	return (
 		<SafeAreaView style={styles.AuthPage}>
 			<View style={styles.imgContainer}>

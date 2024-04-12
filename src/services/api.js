@@ -1,8 +1,7 @@
 const apiUrl = process.env.EXPO_PUBLIC_API_URL;
 
 export const loginUser = async (loginData) => {
-	console.log(JSON.stringify(loginData));
-	fetch(`${apiUrl}login/`, {
+	return await fetch(`${apiUrl}login/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -14,20 +13,23 @@ export const loginUser = async (loginData) => {
 				case 200:
 					return res.json();
 				case 400:
-					return res.statusText;
+					throw new Error(res.status);
 				case 500:
-					return res.statusText;
+					throw new Error(res.status);
+				default:
+					return res.status;
 			}
 			return res.json();
 		})
-		.then((data) => {
-			console.log(data);
-			return data;
+		.then((data) => data)
+		.catch((error) => {
+			console.warn(error);
+			return null;
 		});
 };
 
 export const registerUser = async (registerData) => {
-	fetch(`${apiUrl}`, {
+	return await fetch(`${apiUrl}`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -39,15 +41,17 @@ export const registerUser = async (registerData) => {
 				case 201:
 					return res.json();
 				case 400:
-					return res.statusText;
+					return res.status;
 				case 500:
-					return res.statusText;
+					return res.status;
+				default:
+					return res.status;
 			}
 			return res.json();
 		})
-		.then((data) => {
-			console.log(data);
-			return data;
-		})
-		.catch((error) => console.log(error));
+		.then((data) => data)
+		.catch((error) => {
+			console.warn(error);
+			return null;
+		});
 };

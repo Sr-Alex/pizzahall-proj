@@ -15,7 +15,7 @@ export default authFormStyles = StyleSheet.create({
 
 	formTitle: {
 		marginBottom: 8,
-		
+
 		fontSize: 24,
 		fontWeight: "bold",
 		textAlign: "center",
@@ -24,7 +24,7 @@ export default authFormStyles = StyleSheet.create({
 
 	formSubtitle: {
 		marginBottom: 8,
-		
+
 		fontSize: 16,
 		fontWeight: "600",
 		textAlign: "center",
@@ -80,5 +80,30 @@ export default authFormStyles = StyleSheet.create({
 		textDecorationLine: "underline",
 
 		color: globalStyles.colors.black,
+	},
+
+	PasswordInputContainer: {
+		flexDirection: "row",
+		alignItems: "center",
+
+		width: 256,
+		height: 48,
+
+		backgroundColor: globalStyles.colors.lightGray,
+		borderRadius: 16,
+	},
+
+	PasswordInput: {
+		width: "80%",
+		height: "100%",
+		paddingHorizontal: 12,
+	},
+
+	showOnButton: {
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: "20%",
+		height: "100%",
 	},
 });
