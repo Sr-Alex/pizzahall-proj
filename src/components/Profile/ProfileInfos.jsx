@@ -1,9 +1,16 @@
-import { Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
+import { router } from "expo-router";
+
+import { userSignOut } from "./../../services/api/authApi";
 
 import profileStyles from "./profileStyles";
 import globalStyles from "../../globalStyles";
 
-export default function ProfileInfos() {
+export default function ProfileInfos({ userProfile }) {
+	const handleSignOutButton = () => {
+		userSignOut();
+		router.navigate("(app)");
+	};
 	return (
 		<View style={profileStyles.ProfileInfos}>
 			<View style={profileStyles.fieldContainer}>
@@ -44,6 +51,13 @@ export default function ProfileInfos() {
 					]}
 				/>
 			</View>
+			<Pressable
+				onPress={handleSignOutButton}
+				style={profileStyles.signOutButton}>
+				<Text style={profileStyles.signOutButtonText}>
+					Sair da conta
+				</Text>
+			</Pressable>
 		</View>
 	);
 }

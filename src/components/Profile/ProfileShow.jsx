@@ -4,7 +4,7 @@ import profileStyles from "./profileStyles";
 import ProfileIcon from "../../assets/icons/profileIcon.svg";
 import globalStyles from "../../globalStyles";
 
-export default function ProfileShow() {
+export default function ProfileShow({ userProfile = {} }) {
 	return (
 		<View style={profileStyles.ProfileShow}>
 			<View style={profileStyles.profileImageContainer}>
@@ -14,9 +14,11 @@ export default function ProfileShow() {
 					fill={globalStyles.colors.black}
 				/>
 			</View>
-               <Text style={profileStyles.ShowNameText}>
-                    UserName
-               </Text>
+			<View style={profileStyles.showUserName}>
+				<Text style={profileStyles.showUserNameText}>
+					{userProfile.nome ? userProfile.nome : "Convidado"}
+				</Text>
+			</View>
 		</View>
 	);
 }

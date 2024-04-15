@@ -21,18 +21,32 @@ export default profileStyles = StyleSheet.create({
 		borderRadius: 16,
 	},
 
-	ShowNameText: {
-		fontSize: 24,
-		fontWeight: "400",
+	showUserName: {
+		minWidth: 128,
+		maxWidth: 256,
+		height: "auto",
+		paddingHorizontal: 16,
 
-		color: globalStyles.colors.gray,
+		backgroundColor: globalStyles.colors.offWhite,
+		borderRadius: 64,
+	},
+
+	showUserNameText: {
+		fontSize: 20,
+		fontWeight: "400",
+		textAlign: "center",
+		textAlignVertical: "center",
+
+		color: globalStyles.colors.black,
 	},
 
 	ProfileInfos: {
-          gap: 16,
-          
+		flex: 1,
+
+		gap: 16,
+
 		width: "80%",
-          height: 412,
+		height: 412,
 		paddingVertical: 16,
 		paddingHorizontal: 32,
 
@@ -42,7 +56,7 @@ export default profileStyles = StyleSheet.create({
 
 	fieldContainer: {
 		width: "100%",
-          height: 64,
+		height: 64,
 	},
 
 	fieldLabel: {
@@ -52,5 +66,24 @@ export default profileStyles = StyleSheet.create({
 		fontWeight: "600",
 
 		color: globalStyles.colors.gray,
+	},
+
+	signOutButton: {
+		justifyContent: "center",
+		width: 112,
+		height: 32,
+
+		borderWidth: 2,
+		borderColor: "red",
+
+		borderRadius: 64,
+	},
+
+	signOutButtonText: {
+		fontSize: 16,
+		fontWeight: "bold",
+		textAlign: "center",
+
+		color: globalStyles.colors.black,
 	},
 });

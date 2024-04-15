@@ -67,6 +67,6 @@ export const registerUser = async (registerData) => {
 		});
 };
 
-export const signOut = async () => {
+export const userSignOut = async () => {
 	await secure.deleteUserInfos();
 };

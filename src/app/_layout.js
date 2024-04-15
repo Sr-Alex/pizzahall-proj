@@ -11,13 +11,17 @@ export default function AppLayout() {
 	const isAlredySignedIn = async () => {
 		let infos = await secure.getUserInfos();
 
-		if (infos.token && infos.id) setUserSignedIn(true);
-		else setUserSignedIn(false);
+		if (infos.token && infos.id) {
+			setUserSignedIn(true);
+		} else {
+			setUserSignedIn(false);
+		}
+		console.log(userSignedIn);
 	};
 
 	useEffect(() => {
 		isAlredySignedIn();
-	}, []);
+	});
 
 	return (
 		<UserAuthContext.Provider value={{ userSignedIn }}>

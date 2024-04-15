@@ -106,4 +106,21 @@ export default authFormStyles = StyleSheet.create({
 		width: "20%",
 		height: "100%",
 	},
+
+	AuthSpan: {
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: 256,
+	},
+
+	AuthSpanText: {
+		fontSize: 16,
+		fontWeight: "bold",
+		textAlign: "center",
+
+		textDecorationLine: "underline",
+
+		color: globalStyles.colors.black,
+	},
 });
