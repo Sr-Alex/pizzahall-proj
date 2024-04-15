@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 		gap: 16,
 
 		paddingTop: 8,
-		paddingBottom: 16,
+		paddingBottom: 32,
 
 		backgroundColor: globalStyles.colors.orange,
 		borderRadius: 16,

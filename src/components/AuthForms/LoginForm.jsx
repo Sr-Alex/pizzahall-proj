@@ -5,10 +5,10 @@ import {
 	TextInput,
 	View,
 } from "react-native";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import { validateLogin } from "./../../services/validadores";
-import { loginUser } from "./../../services/api";
+import { loginUser } from "./../../services/api/authApi";
 
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
@@ -37,8 +37,7 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 
 		setIsLoading(false);
 
-		if (!response || typeof response !== "object")
-			return console.warn(response);
+		if (!response || typeof response !== "object") return;
 
 		setUserAuth({
 			id: await response["id"],

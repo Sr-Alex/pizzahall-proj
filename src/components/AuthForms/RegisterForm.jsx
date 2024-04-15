@@ -13,7 +13,7 @@ import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
 
 import { validateRegister } from "../../services/validadores";
-import { registerUser } from "../../services/api";
+import { registerUser } from "../../services/api/authApi";
 
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
@@ -48,8 +48,7 @@ export default function RegisterForm({ toogleLayout }) {
 		const response = await registerUser(registerData);
 
 		setIsLoading(false);
-		if (!response || typeof response !== "object")
-			return console.warn(response);
+		if (!response || typeof response !== "object") return;
 
 		setUserAuth({
 			id: await response["id"],

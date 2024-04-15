@@ -4,8 +4,8 @@ import globalStyles from "./../../globalStyles";
 
 export default storeStyles = StyleSheet.create({
 	StoreList: {
+		flex: 1,
 		width: "80%",
-		height: 384,
 		paddingVertical: 16,
 
 		backgroundColor: globalStyles.colors.offWhite,
