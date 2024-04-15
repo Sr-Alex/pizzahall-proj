@@ -5,9 +5,8 @@ import {
 	TextInput,
 	View,
 } from "react-native";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { router } from "expo-router";
-import UserAuthContext from "./../../contexts/UserAuthContext";
 
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
@@ -19,8 +18,6 @@ import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
 
 export default function RegisterForm({ toogleLayout }) {
-	const { setUserAuth } = useContext(UserAuthContext);
-
 	const [registerData, setRegisterData] = useState({
 		nome: "",
 		email: "",
@@ -45,17 +42,9 @@ export default function RegisterForm({ toogleLayout }) {
 			return;
 		setIsLoading(true);
 
-		const response = await registerUser(registerData);
+		await registerUser(registerData);
 
-		setIsLoading(false);
-		if (!response || typeof response !== "object") return;
-
-		setUserAuth({
-			id: await response["id"],
-			token: await response["token"],
-		});
-
-		router.replace("(app)");
+		router.back();
 	};
 
 	return (

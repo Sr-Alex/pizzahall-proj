@@ -6,6 +6,7 @@ import {
 	View,
 } from "react-native";
 import { useContext, useState } from "react";
+import { router } from "expo-router";
 
 import { validateLogin } from "./../../services/validadores";
 import { loginUser } from "./../../services/api/authApi";
@@ -14,13 +15,9 @@ import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
 
 import SubmitButton from "../Inputs/SubmitButton";
-import UserAuthContext from "./../../contexts/UserAuthContext";
-import { router } from "expo-router";
 import PasswordInput from "./PasswordInput";
 
 export default function LoginForm({ toogleLayout = () => {} }) {
-	const { setUserAuth } = useContext(UserAuthContext);
-
 	const [loginData, setLoginData] = useState({ email: "", password: "" });
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -33,18 +30,11 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 		if (!validateLogin(loginData.email, loginData.password)) return;
 		setIsLoading(true);
 
-		const response = await loginUser(loginData);
+		await loginUser(loginData);
 
 		setIsLoading(false);
 
-		if (!response || typeof response !== "object") return;
-
-		setUserAuth({
-			id: await response["id"],
-			token: await response["token"],
-		});
-
-		router.replace("(app)");
+		router.back();
 	};
 
 	return (
