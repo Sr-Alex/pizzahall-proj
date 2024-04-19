@@ -14,7 +14,7 @@ import authFormStyles from "./authFormStyles";
 import UserAuthContext from "../../contexts/UserAuthContext";
 
 import { validateRegister } from "../../services/validadores";
-import { registerUser } from "../../services/api/authApi";
+import { registerUser } from "../../services/api/userAPI";
 
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";

@@ -1,13 +1,24 @@
-import { Pressable, Text, TextInput, View } from "react-native";
+import {
+	ActivityIndicator,
+	Pressable,
+	Text,
+	TextInput,
+	View,
+} from "react-native";
 import { useState } from "react";
 
 import profileStyles from "./profileStyles";
 
 import CloseIcon from "../../assets/icons/closeIcon.svg";
 import globalStyles from "../../globalStyles";
+import secure from "../../services/secure";
+import { patchUserInfos } from "../../services/api/userAPI";
+import { router } from "expo-router";
 
 export default function ProfileInfosForm({ userProfile = {} }) {
 	const [isModifying, setIsModifying] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+
 	const [personalInfos, setPersonalInfos] = useState(userProfile || {});
 
 	const toggleModify = () => {
@@ -19,7 +30,23 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 			...personalInfos,
 			[input]: value,
 		});
-		console.log(personalInfos);
+	};
+
+	const doInfosPatch = async () => {
+		setIsLoading(false);
+
+		const auth = await secure.getStoredAuth();
+		const response = await patchUserInfos(
+			auth.id,
+			auth.token,
+			personalInfos
+		);
+
+		setIsLoading(true);
+
+		if (!response) return;
+
+		router.navigate("(app)");
 	};
 
 	return (
@@ -74,7 +101,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 						keyboardType="default"
 						returnKeyType="next"
 						textContentType="birthdateDay"
-						placeholder={"DD/MM/YYY"}
+						placeholder={"YYYY-MM-DD"}
 						editable={isModifying}
 						value={personalInfos["Data de Nascimento"]}
 						onChangeText={(value) =>
@@ -87,6 +114,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 			<View
 				style={{ flexDirection: "row", alignSelf: "flex-end", gap: 8 }}>
 				<Pressable
+					disabled={isLoading}
 					onPress={toggleModify}
 					style={profileStyles.editInfosButton}>
 					{isModifying ? (
@@ -96,10 +124,25 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 					)}
 				</Pressable>
 				{isModifying ? (
-					<Pressable style={profileStyles.submitInfosForm}>
-						<Text style={profileStyles.submitInfosFormText}>
-							Enviar
-						</Text>
+					<Pressable
+						disabled={isLoading}
+						onPress={doInfosPatch}
+						style={[
+							profileStyles.submitInfosForm,
+							isLoading
+								? { backgroundColor: globalStyles.colors.gray }
+								: {},
+						]}>
+						{isLoading ? (
+							<ActivityIndicator
+								size={"small"}
+								color={globalStyles.colors.offWhite}
+							/>
+						) : (
+							<Text style={profileStyles.submitInfosFormText}>
+								Enviar
+							</Text>
+						)}
 					</Pressable>
 				) : (
 					<></>

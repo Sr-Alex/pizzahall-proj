@@ -1,6 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 
-const getUserInfos = async () => {
+const getStoredAuth = async () => {
 	const infos = await Promise.all([
 		SecureStore.getItemAsync("token"),
 		SecureStore.getItemAsync("id"),
@@ -12,18 +12,18 @@ const getUserInfos = async () => {
 	};
 };
 
-const setUserInfos = async (values = {}) => {
+const setStoredAuth = async (values = {}) => {
 	await SecureStore.setItemAsync("token", values.token);
 	await SecureStore.setItemAsync("id", values.id);
 };
 
-const deleteUserInfos = async () => {
+const deleteStoredAuth = async () => {
 	await SecureStore.deleteItemAsync("token");
 	await SecureStore.deleteItemAsync("id");
 };
 
 export default secure = {
-	getUserInfos,
-	setUserInfos,
-	deleteUserInfos,
+	getStoredAuth,
+	setStoredAuth,
+	deleteStoredAuth,
 };

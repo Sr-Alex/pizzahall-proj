@@ -9,7 +9,7 @@ import { useContext, useState } from "react";
 import { router } from "expo-router";
 
 import { validateLogin } from "./../../services/validadores";
-import { loginUser } from "./../../services/api/authApi";
+import { loginUser } from "./../../services/api/userAPI";
 
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";

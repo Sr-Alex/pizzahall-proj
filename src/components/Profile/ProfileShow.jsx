@@ -4,7 +4,7 @@ import profileStyles from "./profileStyles";
 import ProfileIcon from "../../assets/icons/profileIcon.svg";
 import globalStyles from "../../globalStyles";
 
-export default function ProfileShow({ userProfile = {} }) {
+export default function ProfileShow({ isSigned = false, userProfile = {} }) {
 	return (
 		<View style={profileStyles.ProfileShow}>
 			<View style={profileStyles.profileImageContainer}>
@@ -16,7 +16,7 @@ export default function ProfileShow({ userProfile = {} }) {
 			</View>
 			<View style={profileStyles.showUserName}>
 				<Text style={profileStyles.showUserNameText}>
-					{userProfile.nome ? userProfile.nome : "Convidado"}
+					{isSigned ? userProfile["Nome"] : "Convidado"}
 				</Text>
 			</View>
 		</View>

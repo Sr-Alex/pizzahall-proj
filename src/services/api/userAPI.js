@@ -1,8 +1,7 @@
 import apiURL from "./apiSecret";
-import secure from "./../secure";
+import secure from "../secure";
 
 const formatRegisterBody = (data) => {
-	console.log(data);
 	return JSON.stringify({
 		nome: data.nome,
 		email: data.email,
@@ -15,6 +14,15 @@ const formatRegisterBody = (data) => {
 		is_cliente: "True",
 	});
 };
+
+const formatPatchUser = (data) => {
+	return JSON.stringify({
+		"cpf": data["CPF"],
+		"telefone": data["Telefone"],
+		"data_nasc": data["Data de Nascimento"],
+	});
+};
+
 export const loginUser = async (loginData) => {
 	return await fetch(`${apiURL}login/`, {
 		method: "POST",
@@ -32,7 +40,7 @@ export const loginUser = async (loginData) => {
 			}
 		})
 		.then((data) => {
-			secure.setUserInfos(data);
+			secure.setStoredAuth(data);
 			return data;
 		})
 		.catch((error) => {
@@ -58,7 +66,7 @@ export const registerUser = async (registerData) => {
 			}
 		})
 		.then((data) => {
-			secure.setUserInfos(data);
+			secure.setStoredAuth(data);
 			return data;
 		})
 		.catch((error) => {
@@ -67,6 +75,34 @@ export const registerUser = async (registerData) => {
 		});
 };
 
+export const getUserInfos = async (userId) => {
+	return await fetch(`${apiURL}?id=${userId}`)
+		.then((res) => {
+			switch (res.status) {
+				case 200:
+					return res.json();
+				default:
+					throw new Error(res.status);
+			}
+		})
+		.then((data) => data)
+		.catch((error) => {
+			console.warn(error);
+			return null;
+		});
+};
+
+export const patchUserInfos = async (userId, token, data) => {
+	return await fetch(`${apiURL}?id=${userId}`, {
+		method: "PATCH",
+		headers: {
+			"Authorization": `"Bearer ${token}`,
+			"Content-Type": "application/json",
+		},
+		body: formatPatchUser(data),
+	});
+};
+
 export const userSignOut = async () => {
-	await secure.deleteUserInfos();
+	await secure.deleteStoredAuth();
 };

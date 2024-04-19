@@ -1,21 +1,38 @@
 import { StyleSheet, View } from "react-native";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import UserAuthContext from "./../../contexts/UserAuthContext";
+import { getUserInfos } from "../../services/api/userAPI";
+import secure from "../../services/secure";
 
 import globalStyles from "../../globalStyles";
 
 import ProfileShow from "../../components/Profile/ProfileShow";
 import ProfileInfos from "../../components/Profile/ProfileInfos";
+
 import AuthSpan from "../../components/AuthForms/AuthSpan";
 
 export default function ProfileLayout() {
 	const { userSignedIn } = useContext(UserAuthContext);
+	const [profile, setProfile] = useState({});
+
+	const getProfile = async () => {
+		const auth = await secure.getStoredAuth();
+		const response = await getUserInfos(auth["id"]);
+
+		if (!response) return;
+
+		setProfile(response);
+	};
+
+	useEffect(() => {
+		getProfile();
+	}, []);
 
 	return (
 		<View style={styles.contentContainer}>
-			<ProfileShow />
-			{userSignedIn ? <ProfileInfos /> : <AuthSpan />}
+			<ProfileShow isSigned={userSignedIn} userProfile={profile} />
+			{userSignedIn ? <ProfileInfos userProfile={profile} /> : <AuthSpan />}
 		</View>
 	);
 }

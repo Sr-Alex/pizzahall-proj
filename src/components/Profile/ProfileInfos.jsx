@@ -4,13 +4,13 @@ import { useContext } from "react";
 
 import profileStyles from "./profileStyles";
 
-import { userSignOut } from "./../../services/api/authApi";
+import { userSignOut } from "./../../services/api/userAPI";
 import UserAuthContext from "../../contexts/UserAuthContext";
 
 import DropDown from "../DropDown";
 import ProfileInfosForm from "./ProfileInfosForm";
 
-export default function ProfileInfos({ userProfile }) {
+export default function ProfileInfos({ userProfile = {}}) {
 	const { setUserSignedIn } = useContext(UserAuthContext);
 
 	const handleSignOutButton = () => {
@@ -23,15 +23,7 @@ export default function ProfileInfos({ userProfile }) {
 	return (
 		<View style={profileStyles.ProfileInfos}>
 			<DropDown title={"Informações Pessoais"}>
-				<ProfileInfosForm
-					userProfile={{
-						"User": "cleiton@gmail.com",
-						"Nome": "Cleiton",
-						"Data de Nascimento": "2004-11-13",
-						"CPF": "20034538909",
-						"Telefone": "98646542",
-					}}
-				/>
+				<ProfileInfosForm userProfile={userProfile} />
 			</DropDown>
 			<Pressable
 				onPress={handleSignOutButton}
