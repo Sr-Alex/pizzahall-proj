@@ -8,23 +8,24 @@ import secure from "./../services/secure";
 export default function AppLayout() {
 	const [userSignedIn, setUserSignedIn] = useState(false);
 
-	const isAlredySignedIn = async () => {
+	const isAlreadySignedIn = async () => {
 		let infos = await secure.getUserInfos();
 
-		if (infos.token && infos.id) {
-			setUserSignedIn(true);
-		} else {
+		if (!infos.token && !infos.id) {
 			setUserSignedIn(false);
+		} else {
+			setUserSignedIn(true);
+			console.log("logado");
 		}
-		console.log(userSignedIn);
 	};
 
 	useEffect(() => {
-		isAlredySignedIn();
-	});
+		isAlreadySignedIn();
+		console.log("Usuário não está logado");
+	}, []);
 
 	return (
-		<UserAuthContext.Provider value={{ userSignedIn }}>
+		<UserAuthContext.Provider value={{ userSignedIn, setUserSignedIn }}>
 			<Stack
 				initialRouteName="(app)"
 				screenOptions={{ headerShown: false }}></Stack>

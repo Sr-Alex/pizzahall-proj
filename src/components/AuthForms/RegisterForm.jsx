@@ -5,11 +5,13 @@ import {
 	TextInput,
 	View,
 } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { router } from "expo-router";
 
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
+
+import UserAuthContext from "../../contexts/UserAuthContext";
 
 import { validateRegister } from "../../services/validadores";
 import { registerUser } from "../../services/api/authApi";
@@ -18,6 +20,8 @@ import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
 
 export default function RegisterForm({ toogleLayout }) {
+	const { setUserSignedIn } = useContext(UserAuthContext);
+
 	const [registerData, setRegisterData] = useState({
 		nome: "",
 		email: "",
@@ -43,6 +47,10 @@ export default function RegisterForm({ toogleLayout }) {
 		setIsLoading(true);
 
 		await registerUser(registerData);
+
+		setIsLoading(false);
+
+		setUserSignedIn(true);
 
 		router.back();
 	};

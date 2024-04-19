@@ -38,16 +38,6 @@ export default authFormStyles = StyleSheet.create({
 		gap: 8,
 	},
 
-	inputLabel: {
-		marginBottom: 8,
-
-		fontSize: 16,
-		fontWeight: "600",
-		letterSpacing: 2,
-
-		color: globalStyles.colors.darkPurple,
-	},
-
 	formInput: {
 		width: 256,
 		height: 48,

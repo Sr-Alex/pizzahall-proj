@@ -10,12 +10,12 @@ import ProfileInfos from "../../components/Profile/ProfileInfos";
 import AuthSpan from "../../components/AuthForms/AuthSpan";
 
 export default function ProfileLayout() {
-	const { userSigned } = useContext(UserAuthContext);
+	const { userSignedIn } = useContext(UserAuthContext);
 
 	return (
 		<View style={styles.contentContainer}>
 			<ProfileShow />
-			{userSigned ? <ProfileInfos /> : <AuthSpan />}
+			{userSignedIn ? <ProfileInfos /> : <AuthSpan />}
 		</View>
 	);
 }

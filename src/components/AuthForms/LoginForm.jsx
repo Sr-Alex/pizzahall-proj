@@ -14,10 +14,14 @@ import { loginUser } from "./../../services/api/authApi";
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
 
+import UserAuthContext from "../../contexts/UserAuthContext";
+
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
 
 export default function LoginForm({ toogleLayout = () => {} }) {
+	const { setUserSignedIn } = useContext(UserAuthContext);
+
 	const [loginData, setLoginData] = useState({ email: "", password: "" });
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -28,11 +32,14 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 
 	const doLogin = async () => {
 		if (!validateLogin(loginData.email, loginData.password)) return;
+
 		setIsLoading(true);
 
 		await loginUser(loginData);
 
 		setIsLoading(false);
+
+		setUserSignedIn(true);
 
 		router.back();
 	};
@@ -47,7 +54,7 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 			</View>
 			<View style={authFormStyles.form}>
 				<View>
-					<Text style={authFormStyles.inputLabel}>Email</Text>
+					<Text style={globalStyles.components.formLabel}>Email</Text>
 					<TextInput
 						keyboardType="email-address"
 						textContentType="emailAddress"
@@ -61,7 +68,7 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 					/>
 				</View>
 				<View>
-					<Text style={authFormStyles.inputLabel}>Senha</Text>
+					<Text style={globalStyles.components.formLabel}>Senha</Text>
 					<PasswordInput field="password" changeData={changeData} />
 				</View>
 				<SubmitButton disabled={isLoading} onPress={doLogin}>

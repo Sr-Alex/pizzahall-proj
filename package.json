@@ -21,7 +21,8 @@
     "react-native-screens": "~3.29.0",
     "react-native-svg": "14.1.0",
     "undefined": ".env",
-    "expo-secure-store": "~12.8.1"
+    "expo-secure-store": "~12.8.1",
+    "expo-dev-client": "~3.3.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

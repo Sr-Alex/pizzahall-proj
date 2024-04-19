@@ -20,12 +20,14 @@ export default globalStyles = {
 
 			borderRadius: 64,
 		},
+
 		img: {
 			width: "100%",
 			height: "100%",
 
 			objectFit: "cover",
 		},
+
 		centeredBorder: {
 			alignSelf: "center",
 
@@ -39,7 +41,13 @@ export default globalStyles = {
 			gap: 8,
 
 			overflow: "scroll",
-			
-		}
+		},
+
+		formLabel: {
+			fontSize: 16,
+			fontWeight: "600",
+			letterSpacing: 2,
+		},
+
 	}),
 };

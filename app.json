@@ -1,33 +1,47 @@
 {
-	"expo": {
-		"name": "pizzahall-proj",
-		"slug": "pizzahall-proj",
-		"version": "1.0.0",
-		"orientation": "portrait",
-		"icon": "./public/icon.png",
-		"userInterfaceStyle": "light",
-		"scheme": "pizzahall-proj",
-		"splash": {
-			"image": "./public/splash.png",
-			"resizeMode": "contain",
-			"backgroundColor": "#ffffff"
-		},
-		"assetBundlePatterns": ["**/*"],
-		"ios": {
-			"supportsTablet": true,
-			"config": {
-				"usesNonExemptEncryption": false
-			}
-		},
-		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./public/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
-			}
-		},
-		"web": {
-			"favicon": "./public/favicon.png"
-		},
-		"plugins": ["expo-router", "expo-secure-store"]
-	}
+  "expo": {
+    "name": "pizzahall-proj",
+    "slug": "pizzahall-proj",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./public/icon.png",
+    "userInterfaceStyle": "light",
+    "scheme": "pizzahall-proj",
+    "splash": {
+      "image": "./public/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./public/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.sweetn64.pizzahallproj"
+    },
+    "web": {
+      "favicon": "./public/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c8de2577-72ed-4e5a-a1ac-6546aea7d72b"
+      }
+    }
+  }
 }

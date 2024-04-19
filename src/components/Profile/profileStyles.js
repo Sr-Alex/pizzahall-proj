@@ -47,25 +47,10 @@ export default profileStyles = StyleSheet.create({
 
 		width: "80%",
 		height: 412,
-		paddingVertical: 16,
-		paddingHorizontal: 32,
+		padding: 16,
 
 		backgroundColor: globalStyles.colors.offWhite,
 		borderRadius: 16,
-	},
-
-	fieldContainer: {
-		width: "100%",
-		height: 64,
-	},
-
-	fieldLabel: {
-		marginBottom: 8,
-
-		fontSize: 18,
-		fontWeight: "600",
-
-		color: globalStyles.colors.gray,
 	},
 
 	signOutButton: {
@@ -85,5 +70,62 @@ export default profileStyles = StyleSheet.create({
 		textAlign: "center",
 
 		color: globalStyles.colors.black,
+	},
+
+	profileFormContainer: {
+		gap: 4,
+
+		paddingBottom: 8,
+	},
+
+	editInfosButton: {
+		alignItems: "center",
+		justifyContent: "center",
+
+		width: 64,
+		height: 32,
+
+		borderWidth: 2,
+		borderRadius: 16,
+
+		borderColor: globalStyles.colors.gray,
+	},
+
+	submitInfosForm: {
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: 64,
+		height: 32,
+
+		backgroundColor: globalStyles.colors.orange,
+		borderRadius: 16,
+	},
+
+	submitInfosFormText: {
+		fontSize: 18,
+		fontWeight: "600",
+
+		color: globalStyles.colors.snowWhite,
+	},
+
+	infosInputContainer: {
+		flexWrap: "wrap",
+		flexDirection: "row",
+		alignItems: "center",
+		gap: 8,
+
+		height: 32,
+	},
+
+	infosInput: {
+		width: 114,
+		height: 24,
+
+		fontSize: 16,
+		textAlignVertical: "bottom",
+
+		borderBottomWidth: 2,
+		borderBottomColor: globalStyles.colors.gray
 	},
 });
