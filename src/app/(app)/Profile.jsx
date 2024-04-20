@@ -1,4 +1,5 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useContext, useEffect, useState } from "react";
 
 import UserAuthContext from "./../../contexts/UserAuthContext";
@@ -30,10 +31,10 @@ export default function ProfileLayout() {
 	}, []);
 
 	return (
-		<View style={styles.contentContainer}>
+		<SafeAreaView style={styles.contentContainer}>
 			<ProfileShow isSigned={userSignedIn} userProfile={profile} />
 			{userSignedIn ? <ProfileInfos userProfile={profile} /> : <AuthSpan />}
-		</View>
+		</SafeAreaView>
 	);
 }
 
