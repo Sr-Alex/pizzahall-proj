@@ -19,7 +19,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 	const [isModifying, setIsModifying] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const [personalInfos, setPersonalInfos] = useState(userProfile || {});
+	const [personalInfos, setPersonalInfos] = useState({});
 
 	const toggleModify = () => {
 		setIsModifying(!isModifying);
@@ -33,7 +33,8 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 	};
 
 	const doInfosPatch = async () => {
-		setIsLoading(false);
+		console.log(personalInfos);
+		setIsLoading(true);
 
 		const auth = await secure.getStoredAuth();
 		const response = await patchUserInfos(
@@ -42,7 +43,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 			personalInfos
 		);
 
-		setIsLoading(true);
+		setIsLoading(false);
 
 		if (!response) return;
 
@@ -64,10 +65,12 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 						keyboardType="phone-pad"
 						textContentType="telephoneNumber"
 						returnKeyType="next"
-						placeholder={"Seu telefone aqui"}
+						placeholder={
+							userProfile["Telefone"] || "Seu telefone aqui"
+						}
 						editable={isModifying}
-						value={personalInfos["Telefone"]}
-						onChangeText={(value) => changeData("Telefone", value)}
+						value={personalInfos["telefone"]}
+						onChangeText={(value) => changeData("telefone", value)}
 						style={profileStyles.infosInput}
 					/>
 				</View>
@@ -82,10 +85,10 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 					<TextInput
 						keyboardType="number-pad"
 						returnKeyType="next"
-						placeholder={"Seu CPF aqui"}
+						placeholder={userProfile["CPF"] || "Seu CPF aqui"}
 						editable={isModifying}
-						value={personalInfos["CPF"]}
-						onChangeText={(value) => changeData("CPF", value)}
+						value={personalInfos["cpf"]}
+						onChangeText={(value) => changeData("cpf", value)}
 						style={profileStyles.infosInput}
 					/>
 				</View>
@@ -101,12 +104,12 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 						keyboardType="default"
 						returnKeyType="next"
 						textContentType="birthdateDay"
-						placeholder={"YYYY-MM-DD"}
-						editable={isModifying}
-						value={personalInfos["Data de Nascimento"]}
-						onChangeText={(value) =>
-							changeData("Data de Nascimento", value)
+						placeholder={
+							userProfile["Data de Nascimento"] || "YYYY-MM-DD"
 						}
+						editable={isModifying}
+						value={personalInfos["data_nasc"]}
+						onChangeText={(value) => changeData("data_nasc", value)}
 						style={profileStyles.infosInput}
 					/>
 				</View>

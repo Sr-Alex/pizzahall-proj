@@ -28,7 +28,7 @@ export default function ProfileLayout() {
 
 	useEffect(() => {
 		getProfile();
-	}, []);
+	});
 
 	return (
 		<SafeAreaView style={styles.contentContainer}>

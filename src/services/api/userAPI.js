@@ -15,14 +15,6 @@ const formatRegisterBody = (data) => {
 	});
 };
 
-const formatPatchUser = (data) => {
-	return JSON.stringify({
-		"cpf": data["CPF"],
-		"telefone": data["Telefone"],
-		"data_nasc": data["Data de Nascimento"],
-	});
-};
-
 export const loginUser = async (loginData) => {
 	return await fetch(`${apiURL}login/`, {
 		method: "POST",
@@ -99,8 +91,22 @@ export const patchUserInfos = async (userId, token, data) => {
 			"Authorization": `"Bearer ${token}`,
 			"Content-Type": "application/json",
 		},
-		body: formatPatchUser(data),
-	});
+		body: JSON.stringify(data),
+	})
+		.then((res) => {
+			console.log(res.status);
+			switch (res.status) {
+				case 200:
+					return res.json();
+				default:
+					throw new Error(res.status);
+			}
+		})
+		.then((data) => data)
+		.catch((error) => {
+			console.warn(error);
+			return null;
+		});
 };
 
 export const userSignOut = async () => {
