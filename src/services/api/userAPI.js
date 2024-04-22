@@ -94,7 +94,6 @@ export const patchUserInfos = async (userId, token, data) => {
 		body: JSON.stringify(data),
 	})
 		.then((res) => {
-			console.log(res.status);
 			switch (res.status) {
 				case 200:
 					return res.json();

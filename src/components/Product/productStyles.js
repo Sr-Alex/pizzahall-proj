@@ -26,14 +26,16 @@ export default productStyles = StyleSheet.create({
 
 	productTitle: {
 		width: 256,
+		height: 96,
 
-		marginTop: 32,
-		marginBottom: 16,
+		marginTop: 4,
+		marginBottom: 8,
 
-		fontSize: 24,
+		fontSize: 20,
+		fontWeight: "600",
 		textAlign: "center",
 
-		color: globalStyles.colors.gray,
+		color: globalStyles.colors.black,
 	},
 
 	productCurrency: {
@@ -41,12 +43,14 @@ export default productStyles = StyleSheet.create({
 		fontWeight: "bold",
 		textAlign: "center",
 
-		color: globalStyles.colors.black,
+		color: globalStyles.colors.gray,
 	},
 
 	productPrice: {
 		fontSize: 20,
+		fontWeight: "bold",
 		textAlign: "center",
+		letterSpacing: 4,
 
 		color: globalStyles.colors.black,
 	},

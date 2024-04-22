@@ -6,7 +6,7 @@ import globalStyles from "./../../globalStyles";
 
 export default function StoreMiniature({ store }) {
 	return (
-		<Link href={"home/MenuLayout"} asChild>
+		<Link href={"Menu"} asChild>
 			<Pressable>
 				<View style={storeStyles.StoreMiniature}>
 					<View style={globalStyles.components.roundedImgContainer}>

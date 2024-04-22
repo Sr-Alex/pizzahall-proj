@@ -5,14 +5,21 @@ import PagerView from "react-native-pager-view";
 import productStyles from "./productStyles";
 
 import ProductView from "./ProductView";
-import SizeSelector from "./sizeSelector";
+import SizeSelector from "./SizeSelector";
 
 export default function ProductSelector({ products = [] }) {
-	const [currentProduct, setCurrentProduct] = useState({});
+	const [currentProduct, setCurrentProduct] = useState(products[0] || {});
+	const [selectedProduct, setSelectedProduct] = useState({});
 
 	return (
 		<View style={productStyles.productSelector}>
-			<PagerView initialPage={0} style={productStyles.ProductPager}>
+			<PagerView
+				orientation={"horizontal"}
+				onPageSelected={(prod) =>
+					setCurrentProduct(products[prod.nativeEvent.position])
+				}
+				initialPage={0}
+				style={productStyles.ProductPager}>
 				{products.map((prod, index) => (
 					<ProductView key={index} product={prod} />
 				))}
@@ -21,16 +28,19 @@ export default function ProductSelector({ products = [] }) {
 				<Text style={productStyles.productTitle}>
 					{currentProduct["name"]
 						? currentProduct["name"]
-						: "Nome do produto"}
+						: "Sem produto"}
 				</Text>
 				<Text style={[productStyles.productCurrency]}>R$</Text>
 				<Text style={productStyles.productPrice}>
-					{currentProduct["preco"]
-						? currentProduct["preco"]
-						: "Preço do produto"}
+					{currentProduct["preço"]
+						? parseFloat(currentProduct["preço"]).toFixed(2)
+						: "Sem preço"}
 				</Text>
 			</View>
-			<SizeSelector />
+			<SizeSelector
+				product={currentProduct}
+				setSize={setSelectedProduct}
+			/>
 		</View>
 	);
 }
