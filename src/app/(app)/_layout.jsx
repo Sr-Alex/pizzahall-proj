@@ -8,11 +8,13 @@ import ProfileIcon from "../../assets/icons/profileIcon.svg";
 export default function TabsLayout() {
 	return (
 		<Tabs
+			initialRouteName="index"
+			backBehavior="initialRoute"
 			screenOptions={{
 				headerShown: false,
 				tabBarActiveTintColor: globalStyles.colors.black,
 				tabBarInactiveTintColor: globalStyles.colors.gray,
-				tabBarShowLabel: false,
+				tabBarShowLabel: true,
 			}}>
 			<Tabs.Screen
 				name="Orders"
@@ -45,9 +47,9 @@ export default function TabsLayout() {
 			/>
 
 			<Tabs.Screen
-				name="Menu"
+				name="store/[name]"
 				options={{
-					title: "Menu",
+					title: "store",
 					href: null,
 				}}
 			/>

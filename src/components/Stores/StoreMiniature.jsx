@@ -4,25 +4,38 @@ import { Link } from "expo-router";
 import storeStyles from "./storeStyles";
 import globalStyles from "./../../globalStyles";
 
-export default function StoreMiniature({ store }) {
+import PizzariaLogo from "../../assets/img/pizza.jpg";
+
+export default function StoreMiniature({ store = {} }) {
 	return (
-		<Link href={"Menu"} asChild>
+		<Link
+			disabled={!store["name"]}
+			href={`/(app)/store/${store["name"]}`}
+			asChild>
 			<Pressable>
 				<View style={storeStyles.StoreMiniature}>
 					<View style={globalStyles.components.roundedImgContainer}>
 						<Image
-							source={require("../../assets/img/pizza.jpg")}
+							source={
+								store["imgUrl"]
+									? { uri: store["imgUrl"] }
+									: PizzariaLogo
+							}
 							style={globalStyles.components.img}
 						/>
 					</View>
 					<View>
 						<Text style={storeStyles.miniatureTitle}>
-							Lorem ipsum
+							{store["name"] || "Empresa sem nome"}
 						</Text>
 						<Text style={storeStyles.miniatureText}>
 							Estado X, Rua lorem, N°401
 						</Text>
-						<Text style={storeStyles.miniatureText}>13h - 20h</Text>
+						<Text style={storeStyles.miniatureText}>
+							{`${store["horario"][0] || "h"} - ${
+								store["horario"][1] || "h"
+							}`}
+						</Text>
 					</View>
 				</View>
 				<View
