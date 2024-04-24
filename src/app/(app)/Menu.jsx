@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import globalStyles from "../globalStyles";
+import globalStyles from "../../globalStyles";
 
-import MenuContainer from "../components/Menu/MenuContainer";
+import MenuContainer from "../../components/Menu/MenuContainer";
 
 export default function MenuLayout() {
 	return (
