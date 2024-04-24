@@ -26,7 +26,7 @@ export default productStyles = StyleSheet.create({
 
 	productTitle: {
 		width: 256,
-		height: 96,
+		height: 64,
 
 		marginTop: 4,
 		marginBottom: 8,
@@ -57,11 +57,12 @@ export default productStyles = StyleSheet.create({
 
 	SizeSelector: {
 		flexDirection: "row",
-		justifyContent: "space-between",
+		flexWrap: "wrap",
+		justifyContent: "space-evenly",
+		gap: 8,
 
 		width: 256,
-		height: 48,
-		marginTop: 32,
+		marginTop: 16,
 	},
 
 	sizeMark: {
@@ -80,5 +81,21 @@ export default productStyles = StyleSheet.create({
 		fontWeight: "bold",
 
 		color: globalStyles.colors.offWhite,
+	},
+
+	SelectProduct: {
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+
+		width: 256,
+		height: 48,
+	},
+
+	SelectProductText: {
+		fontSize: 20,
+		fontWeight: "600",
+
+		color: globalStyles.colors.gray,
 	},
 });

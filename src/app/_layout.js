@@ -11,7 +11,7 @@ export default function AppLayout() {
 	const isAlreadySignedIn = async () => {
 		let infos = await secure.getStoredAuth();
 
-		if (!infos.token && !infos.id) {
+		if (!infos || !infos["token"] && !infos["id"]) {
 			setUserSignedIn(false);
 		} else {
 			setUserSignedIn(true);

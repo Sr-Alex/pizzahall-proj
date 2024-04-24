@@ -1,45 +1,36 @@
-import { useState } from "react";
-import { Text, View } from "react-native";
-import PagerView from "react-native-pager-view";
+import { useEffect, useState } from "react";
+import { View } from "react-native";
 
 import productStyles from "./productStyles";
 
-import ProductView from "./ProductView";
+import ProductSlider from "./ProductSlider";
+import ProductDetails from "./ProductDetails";
 import SizeSelector from "./SizeSelector";
+import SelectProduct from "./SelectProduct";
 
 export default function ProductSelector({ products = [] }) {
 	const [currentProduct, setCurrentProduct] = useState(products[0] || {});
 	const [selectedProduct, setSelectedProduct] = useState({});
 
+	useEffect(() => {
+		setSelectedProduct({});
+	}, [currentProduct]);
+
+	useEffect(() => {
+		console.log(selectedProduct);
+	}, [selectedProduct]);
+
 	return (
 		<View style={productStyles.productSelector}>
-			<PagerView
-				orientation={"horizontal"}
-				onPageSelected={(prod) =>
-					setCurrentProduct(products[prod.nativeEvent.position])
-				}
-				initialPage={0}
-				style={productStyles.ProductPager}>
-				{products.map((prod, index) => (
-					<ProductView key={index} product={prod} />
-				))}
-			</PagerView>
-			<View>
-				<Text style={productStyles.productTitle}>
-					{currentProduct["name"]
-						? currentProduct["name"]
-						: "Sem produto"}
-				</Text>
-				<Text style={[productStyles.productCurrency]}>R$</Text>
-				<Text style={productStyles.productPrice}>
-					{currentProduct["preço"]
-						? parseFloat(currentProduct["preço"]).toFixed(2)
-						: "Sem preço"}
-				</Text>
-			</View>
+			<ProductSlider products={products} setProduct={setCurrentProduct} />
+			<ProductDetails product={currentProduct} />
 			<SizeSelector
 				product={currentProduct}
-				setSize={setSelectedProduct}
+				select={selectedProduct}
+				setSelect={setSelectedProduct}
+			/>
+			<SelectProduct
+				selected={selectedProduct}
 			/>
 		</View>
 	);

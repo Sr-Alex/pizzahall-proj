@@ -1,25 +1,17 @@
 import * as SecureStore from "expo-secure-store";
 
 const getStoredAuth = async () => {
-	const infos = await Promise.all([
-		SecureStore.getItemAsync("token"),
-		SecureStore.getItemAsync("id"),
-	]);
+	const infos = JSON.parse(await SecureStore.getItemAsync("auth"));
 
-	return {
-		token: infos[0],
-		id: infos[1],
-	};
+	return infos;
 };
 
 const setStoredAuth = async (values = {}) => {
-	await SecureStore.setItemAsync("token", values.token);
-	await SecureStore.setItemAsync("id", values.id);
+	await SecureStore.setItemAsync("auth", JSON.stringify(values));
 };
 
 const deleteStoredAuth = async () => {
-	await SecureStore.deleteItemAsync("token");
-	await SecureStore.deleteItemAsync("id");
+	await SecureStore.deleteItemAsync("auth");
 };
 
 export default secure = {

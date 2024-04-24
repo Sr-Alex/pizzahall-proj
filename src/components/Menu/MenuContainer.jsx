@@ -1,17 +1,18 @@
-import { Image, Text, View } from "react-native";
+import { View } from "react-native";
 
-import globalStyles from "../../globalStyles";
 import menuStyles from "./menuStyles";
-import storeStyles from "../Stores/storeStyles";
 
-import PizzaLogo from "../../assets/img/pizza.jpg";
+import { ShoppingCartProvider } from "../../contexts/ShoppingCartContext";
+
 import ProductSelector from "./../Product/ProductSelector";
+import StoreView from "../Stores/StoreView";
+
 
 const placeholder = [
 	{
 		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
 		pizzaria_id: "43cff103-1d6b-49d8-bc0e-0c8f7cf2a60a",
-		name: "Pizza Frango com catupiri Frango com catupiri Frango com catupiri",
+		name: "Pizza Frango com catupiri",
 		preço: 30.0,
 		tamanhos: ["P", "M"],
 		descrição: "A especialidade da casa.",
@@ -23,7 +24,7 @@ const placeholder = [
 		pizzaria_id: "16ec1860-07ef-4411-8cab-5015a626b3fd",
 		name: "Pizza Portuguesa",
 		preço: 35.0,
-		tamanhos: ["P", "M", "G"],
+		tamanhos: ["P", "M", "G", "F"],
 		descrição: "",
 
 		logo: "https://picsum.photos/500",
@@ -33,7 +34,7 @@ const placeholder = [
 		pizzaria_id: "7d926d0c-4fba-4d09-848b-42012925f1a3",
 		name: "Pizza Brasileira",
 		preço: 30.2,
-		tamanhos: ["M", "G"],
+		tamanhos: ["M"],
 		descrição: "Mistura nacional!",
 
 		logo: "https://picsum.photos/500",
@@ -43,16 +44,10 @@ const placeholder = [
 export default function MenuContainer({ store = {} }) {
 	return (
 		<View style={menuStyles.MenuContainer}>
-			<View style={menuStyles.menuStoreShow}>
-				<View style={globalStyles.components.roundedImgContainer}>
-					<Image
-						source={PizzaLogo}
-						style={globalStyles.components.img}
-					/>
-				</View>
-				<Text style={storeStyles.storeName}>Nome da loja</Text>
-			</View>
-			<ProductSelector products={placeholder} />
+			<ShoppingCartProvider>
+				<StoreView store={store} />
+				<ProductSelector products={placeholder} />
+			</ShoppingCartProvider>
 		</View>
 	);
 }

@@ -19,6 +19,9 @@ export default function ProfileLayout() {
 
 	const getProfile = async () => {
 		const auth = await secure.getStoredAuth();
+
+		if (!auth || !auth["id"] || !auth["token"]) return;
+
 		const response = await getUserInfos(auth["id"]);
 
 		if (!response) return;

@@ -24,6 +24,7 @@ export const loginUser = async (loginData) => {
 		body: JSON.stringify(loginData),
 	})
 		.then((res) => {
+			console.log(res.status);
 			switch (res.status) {
 				case 200:
 					return res.json();
@@ -79,7 +80,7 @@ export const getUserInfos = async (userId) => {
 		})
 		.then((data) => data)
 		.catch((error) => {
-			console.warn(error);
+			console.error(error);
 			return null;
 		});
 };
