@@ -9,8 +9,8 @@ import PizzariaLogo from "../../assets/img/pizza.jpg";
 export default function StoreMiniature({ store = {} }) {
 	return (
 		<Link
-			disabled={!store["name"]}
-			href={`/(app)/store/${store["name"]}`}
+			disabled={!store["id"]}
+			href={`/(app)/store/${store["id"]}`}
 			asChild>
 			<Pressable>
 				<View style={storeStyles.StoreMiniature}>

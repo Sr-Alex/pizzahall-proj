@@ -19,7 +19,7 @@ import UserAuthContext from "../../contexts/UserAuthContext";
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
 
-export default function LoginForm({ toogleLayout = () => {} }) {
+export default function LoginForm({ toggleLayout = () => {} }) {
 	const { setUserSignedIn } = useContext(UserAuthContext);
 
 	const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -35,9 +35,11 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 
 		setIsLoading(true);
 
-		await loginUser(loginData);
+		const response = await loginUser(loginData);
 
 		setIsLoading(false);
+
+		if (!response) return;
 
 		setUserSignedIn(true);
 
@@ -54,7 +56,7 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 			</View>
 			<View style={authFormStyles.form}>
 				<View>
-					<Text style={globalStyles.components.formLabel}>Email</Text>
+					<Text style={authFormStyles.formInputLabel}>Email</Text>
 					<TextInput
 						keyboardType="email-address"
 						textContentType="emailAddress"
@@ -68,7 +70,7 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 					/>
 				</View>
 				<View>
-					<Text style={globalStyles.components.formLabel}>Senha</Text>
+					<Text style={authFormStyles.formInputLabel}>Senha</Text>
 					<PasswordInput field="password" changeData={changeData} />
 				</View>
 				<SubmitButton disabled={isLoading} onPress={doLogin}>
@@ -88,7 +90,7 @@ export default function LoginForm({ toogleLayout = () => {} }) {
 				<Pressable>
 					<Text style={authFormStyles.anchors}>Esqueci a senha</Text>
 				</Pressable>
-				<Pressable onPress={toogleLayout}>
+				<Pressable onPress={toggleLayout}>
 					<Text style={authFormStyles.anchors}>Criar uma conta</Text>
 				</Pressable>
 			</View>

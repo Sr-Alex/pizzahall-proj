@@ -57,7 +57,7 @@ export default function SelectProduct({ selected }) {
 				<AddIcon
 					width={48}
 					height={48}
-					fill={globalStyles.colors.orange}
+					fill={globalStyles.colors.green}
 				/>
 			</TouchableOpacity>
 		</View>

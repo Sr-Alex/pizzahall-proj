@@ -9,16 +9,14 @@ import SizeSelector from "./SizeSelector";
 import SelectProduct from "./SelectProduct";
 
 export default function ProductSelector({ products = [] }) {
-	const [currentProduct, setCurrentProduct] = useState(products[0] || {});
+	const [currentProduct, setCurrentProduct] = useState(
+		products ? products[0] : {}
+	);
 	const [selectedProduct, setSelectedProduct] = useState({});
 
 	useEffect(() => {
 		setSelectedProduct({});
 	}, [currentProduct]);
-
-	useEffect(() => {
-		console.log(selectedProduct);
-	}, [selectedProduct]);
 
 	return (
 		<View style={productStyles.productSelector}>
@@ -29,9 +27,7 @@ export default function ProductSelector({ products = [] }) {
 				select={selectedProduct}
 				setSelect={setSelectedProduct}
 			/>
-			<SelectProduct
-				selected={selectedProduct}
-			/>
+			<SelectProduct selected={selectedProduct} />
 		</View>
 	);
 }

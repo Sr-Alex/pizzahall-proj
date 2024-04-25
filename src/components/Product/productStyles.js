@@ -65,6 +65,13 @@ export default productStyles = StyleSheet.create({
 		marginTop: 16,
 	},
 
+	SizeSelectorLabel: {
+		...globalStyles.fontSizes.medium,
+		textAlign: "center",
+
+		color: globalStyles.colors.gray,
+	},
+
 	sizeMark: {
 		alignItems: "center",
 		justifyContent: "center",

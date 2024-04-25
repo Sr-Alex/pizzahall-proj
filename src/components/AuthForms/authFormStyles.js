@@ -16,18 +16,18 @@ export default authFormStyles = StyleSheet.create({
 	formTitle: {
 		marginBottom: 8,
 
-		fontSize: 24,
-		fontWeight: "bold",
+		...globalStyles.fontSizes.spacedTitle,
 		textAlign: "center",
+
 		color: globalStyles.colors.darkPurple,
 	},
 
 	formSubtitle: {
 		marginBottom: 8,
 
-		fontSize: 16,
-		fontWeight: "600",
+		...globalStyles.fontSizes.medium,
 		textAlign: "center",
+
 		color: globalStyles.colors.black,
 	},
 
@@ -35,7 +35,7 @@ export default authFormStyles = StyleSheet.create({
 		alignItems: "center",
 
 		width: "100%",
-		gap: 8,
+		gap: 16,
 	},
 
 	formInput: {
@@ -48,10 +48,15 @@ export default authFormStyles = StyleSheet.create({
 		borderRadius: 16,
 	},
 
+	formInputLabel: {
+		...globalStyles.fontSizes.spacedLabel,
+
+		color: globalStyles.colors.black,
+	},
+
 	formButtonText: {
+		...globalStyles.fontSizes.large,
 		textAlign: "center",
-		fontSize: 20,
-		fontWeight: "bold",
 
 		color: globalStyles.colors.snowWhite,
 	},
@@ -65,8 +70,7 @@ export default authFormStyles = StyleSheet.create({
 	},
 
 	anchors: {
-		fontSize: 16,
-		fontWeight: "600",
+		...globalStyles.fontSizes.small,
 		textDecorationLine: "underline",
 
 		color: globalStyles.colors.black,

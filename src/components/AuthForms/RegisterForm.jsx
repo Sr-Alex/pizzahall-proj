@@ -19,7 +19,7 @@ import { registerUser } from "../../services/api/userAPI";
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
 
-export default function RegisterForm({ toogleLayout }) {
+export default function RegisterForm({ toggleLayout }) {
 	const { setUserSignedIn } = useContext(UserAuthContext);
 
 	const [registerData, setRegisterData] = useState({
@@ -44,11 +44,14 @@ export default function RegisterForm({ toogleLayout }) {
 			)
 		)
 			return;
+
 		setIsLoading(true);
 
-		await registerUser(registerData);
+		const response = await registerUser(registerData);
 
 		setIsLoading(false);
+
+		if (!response) return;
 
 		setUserSignedIn(true);
 
@@ -62,7 +65,7 @@ export default function RegisterForm({ toogleLayout }) {
 			</View>
 			<View style={authFormStyles.form}>
 				<View>
-					<Text style={authFormStyles.inputLabel}>Nome</Text>
+					<Text style={authFormStyles.formInputLabel}>Nome</Text>
 					<TextInput
 						textContentType="name"
 						autoComplete="name"
@@ -74,7 +77,7 @@ export default function RegisterForm({ toogleLayout }) {
 					/>
 				</View>
 				<View>
-					<Text style={authFormStyles.inputLabel}>Email</Text>
+					<Text style={authFormStyles.formInputLabel}>Email</Text>
 					<TextInput
 						keyboardType="email-address"
 						textContentType="emailAddress"
@@ -88,11 +91,11 @@ export default function RegisterForm({ toogleLayout }) {
 					/>
 				</View>
 				<View>
-					<Text style={authFormStyles.inputLabel}>Senha</Text>
+					<Text style={authFormStyles.formInputLabel}>Senha</Text>
 					<PasswordInput field="password" changeData={changeData} />
 				</View>
 				<View>
-					<Text style={authFormStyles.inputLabel}>
+					<Text style={authFormStyles.formInputLabel}>
 						Confirmar senha
 					</Text>
 					<PasswordInput
@@ -117,7 +120,7 @@ export default function RegisterForm({ toogleLayout }) {
 				</SubmitButton>
 			</View>
 			<View style={authFormStyles.anchorsContainer}>
-				<Pressable onPress={toogleLayout}>
+				<Pressable onPress={toggleLayout}>
 					<Text style={authFormStyles.anchors}>
 						Já tem uma conta? Faça login aqui!
 					</Text>

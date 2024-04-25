@@ -15,8 +15,8 @@ const formatRegisterBody = (data) => {
 	});
 };
 
-export const loginUser = async (loginData) => {
-	return await fetch(`${apiURL}login/`, {
+export const loginUser = (loginData) => {
+	return fetch(`${apiURL}login/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -42,8 +42,8 @@ export const loginUser = async (loginData) => {
 		});
 };
 
-export const registerUser = async (registerData) => {
-	return await fetch(`${apiURL}`, {
+export const registerUser = (registerData) => {
+	return fetch(`${apiURL}`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -68,8 +68,8 @@ export const registerUser = async (registerData) => {
 		});
 };
 
-export const getUserInfos = async (userId) => {
-	return await fetch(`${apiURL}?id=${userId}`)
+export const getUserInfos = (userId) => {
+	return fetch(`${apiURL}?id=${userId}`)
 		.then((res) => {
 			switch (res.status) {
 				case 200:
@@ -85,8 +85,8 @@ export const getUserInfos = async (userId) => {
 		});
 };
 
-export const patchUserInfos = async (userId, token, data) => {
-	return await fetch(`${apiURL}?id=${userId}`, {
+export const patchUserInfos = (userId, token, data) => {
+	return fetch(`${apiURL}?id=${userId}`, {
 		method: "PATCH",
 		headers: {
 			"Authorization": `"Bearer ${token}`,

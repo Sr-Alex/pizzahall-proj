@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 	},
 
 	buttonEnabled: {
-		backgroundColor: globalStyles.colors.orange,
+		backgroundColor: globalStyles.colors.green,
 	},
 	buttonDisabled: {
 		backgroundColor: globalStyles.colors.gray,

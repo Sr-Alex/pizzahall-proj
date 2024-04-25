@@ -9,12 +9,14 @@ export default function StoreView({ store = {} }) {
 		<View style={menuStyles.menuStoreShow}>
 			<View style={globalStyles.components.roundedImgContainer}>
 				<Image
-					source={store["logo"] || PizzaLogo}
+					source={
+						store["imgUrl"] ? { uri: store["imgUrl"] } : PizzaLogo
+					}
 					style={globalStyles.components.img}
 				/>
 			</View>
 			<Text style={storeStyles.storeName}>
-				{store["name"] || "Loja vazia"}
+				{store["name"] ? store["name"] : "Loja vazia"}
 			</Text>
 		</View>
 	);

@@ -47,7 +47,7 @@ export default function TabsLayout() {
 			/>
 
 			<Tabs.Screen
-				name="store/[name]"
+				name="store/[id]"
 				options={{
 					title: "store",
 					href: null,

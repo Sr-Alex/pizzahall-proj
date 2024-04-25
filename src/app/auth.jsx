@@ -10,10 +10,10 @@ import LoginForm from "../components/AuthForms/LoginForm";
 import PizzaLogo from "../assets/img/pizza.jpg";
 
 export default function Auth() {
-	const [isLoginLayout, setisLoginLayout] = useState(true);
+	const [isLoginLayout, setIsLoginLayout] = useState(true);
 
-	const toogleLayout = () => {
-		setisLoginLayout(!isLoginLayout);
+	const toggleLayout = () => {
+		setIsLoginLayout(!isLoginLayout);
 	};
 	return (
 		<SafeAreaView style={styles.AuthPage}>
@@ -22,9 +22,9 @@ export default function Auth() {
 			</View>
 			<ScrollView automaticallyAdjustKeyboardInsets>
 				{isLoginLayout ? (
-					<LoginForm toogleLayout={toogleLayout} />
+					<LoginForm toggleLayout={toggleLayout} />
 				) : (
-					<RegisterForm toogleLayout={toogleLayout} />
+					<RegisterForm toggleLayout={toggleLayout} />
 				)}
 			</ScrollView>
 			<View style={styles.crossSquare} />
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 
 	crossBand: {
 		position: "absolute",
-		top: "25%",
+		top: "30%",
 		zIndex: -1,
 
 		transform: [{ rotateZ: "-15deg" }],
