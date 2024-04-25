@@ -16,8 +16,8 @@ const storesPlaceholder = [
 		imgUrl: "https://picsum.photos/500",
 	},
 	{
-		name: "Pizzaria São Bento",
 		id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
+		name: "Pizzaria São Bento",
 		status: "fechado",
 		horario: ["08:00"],
 		imgUrl: "https://picsum.photos/500",
@@ -27,7 +27,7 @@ const storesPlaceholder = [
 const pizzasPlaceholder = [
 	{
 		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
-		pizzaria_id: "43cff103-1d6b-49d8-bc0e-0c8f7cf2a60a",
+		pizzaria_id: "a912a063-2ef1-4878-86b4-66af3085779c",
 		name: "Pizza Frango com catupiri",
 		preço: 30.0,
 		tamanhos: ["P", "M"],
@@ -37,7 +37,7 @@ const pizzasPlaceholder = [
 	},
 	{
 		id: "7782020e-a171-41d0-8cfc-ff4f805f49f3",
-		pizzaria_id: "16ec1860-07ef-4411-8cab-5015a626b3fd",
+		pizzaria_id: "a912a063-2ef1-4878-86b4-66af3085779c",
 		name: "Pizza Portuguesa",
 		preço: 35.0,
 		tamanhos: ["P", "M", "G", "F"],
@@ -47,11 +47,73 @@ const pizzasPlaceholder = [
 	},
 	{
 		id: "5298b56c-3de2-4ddb-a184-4633bde41f69",
-		pizzaria_id: "7d926d0c-4fba-4d09-848b-42012925f1a3",
+		pizzaria_id: "a912a063-2ef1-4878-86b4-66af3085779c",
 		name: "Pizza Brasileira",
 		preço: 30.2,
 		tamanhos: ["M"],
 		descrição: "Mistura nacional!",
+
+		logo: "https://picsum.photos/500",
+	},
+
+	{
+		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		pizzaria_id: "99595765-908a-4a9c-bd5a-b96948cd6c4e",
+		name: "Pizza sabor Marguerita",
+		preço: 40.0,
+		tamanhos: ["P", "M", "F"],
+		descrição: "A especialidade da casa.",
+
+		logo: "https://picsum.photos/500",
+	},
+	{
+		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		pizzaria_id: "99595765-908a-4a9c-bd5a-b96948cd6c4e",
+		name: "Pizza sabor Napolitana",
+		preço: 45.0,
+		tamanhos: ["P", "G", "F"],
+		descrição: "A especialidade da casa.",
+
+		logo: "https://picsum.photos/500",
+	},
+	{
+		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		pizzaria_id: "99595765-908a-4a9c-bd5a-b96948cd6c4e",
+		name: "Pizza sabor Muçarela",
+		preço: 30.0,
+		tamanhos: ["P", "G"],
+		descrição: "A especialidade da casa.",
+
+		logo: "https://picsum.photos/500",
+	},
+
+	{
+		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		pizzaria_id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
+		name: "Pizza sabor Lombo canadense ",
+		preço: 50.0,
+		tamanhos: ["G", "F"],
+		descrição: "A especialidade da casa.",
+
+		logo: "https://picsum.photos/500",
+	},
+	{
+		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		pizzaria_id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
+		name: "Pizza Quatro queijos ",
+		preço: 40.0,
+		tamanhos: ["M", "F"],
+		descrição: "A especialidade da casa.",
+
+		logo: "https://picsum.photos/500",
+	},
+	{
+		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		pizzaria_id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
+		name: "Pizza sabor Califórnia ",
+		preço: 35.0,
+		tamanhos: ["P", "M", "G", "F"],
+		descrição: "A especialidade da casa.",
 
 		logo: "https://picsum.photos/500",
 	},
@@ -72,8 +134,8 @@ export const getStore = (storeId) => {
 	});
 };
 
-export const getStoreProducts = () => {
+export const getStoreProducts = (storeId) => {
 	return new Promise((res) => {
-		return res(pizzasPlaceholder);
+		res(pizzasPlaceholder.filter((prod) => prod["pizzaria_id"] == storeId));
 	});
 };

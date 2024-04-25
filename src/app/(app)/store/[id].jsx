@@ -23,7 +23,7 @@ export default function StoreContainer() {
 
 	useEffect(() => {
 		getStoreInfo();
-	}, []);
+	}, [id]);
 
 	return (
 		<SafeAreaView style={styles.contentContainer}>
@@ -34,10 +34,10 @@ export default function StoreContainer() {
 
 const styles = StyleSheet.create({
 	contentContainer: {
+		flex: 1,
 		alignItems: "center",
 		paddingVertical: 16,
 
-		width: "100%",
 		height: "100%",
 
 		backgroundColor: globalStyles.colors.orange,
