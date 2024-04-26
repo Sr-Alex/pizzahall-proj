@@ -56,8 +56,8 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 				<View style={profileStyles.infosInputContainer}>
 					<Text
 						style={[
-							globalStyles.components.formLabel,
-							{ color: globalStyles.colors.black },
+							globalStyles.fontSizes.spacedLabel,
+							{ flex: 1,color: globalStyles.colors.black },
 						]}>
 						telefone:
 					</Text>
@@ -77,8 +77,8 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 				<View style={profileStyles.infosInputContainer}>
 					<Text
 						style={[
-							globalStyles.components.formLabel,
-							{ color: globalStyles.colors.black },
+							globalStyles.fontSizes.spacedLabel,
+							{ flex: 1,color: globalStyles.colors.black },
 						]}>
 						CPF:
 					</Text>
@@ -95,8 +95,8 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 				<View style={profileStyles.infosInputContainer}>
 					<Text
 						style={[
-							globalStyles.components.formLabel,
-							{ color: globalStyles.colors.black },
+							globalStyles.fontSizes.spacedLabel,
+							{ flex: 1,color: globalStyles.colors.black },
 						]}>
 						Data de nascimento:
 					</Text>

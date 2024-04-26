@@ -119,7 +119,7 @@ export default profileStyles = StyleSheet.create({
 	},
 
 	infosInput: {
-		width: 114,
+		width: 128,
 		height: 24,
 
 		fontSize: 16,

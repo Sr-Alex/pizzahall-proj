@@ -1,7 +1,7 @@
 import apiURL from "./apiSecret";
 import secure from "../secure";
 
-const formatRegisterBody = (data) => {
+const formatRegisterBody = async (data) => {
 	return JSON.stringify({
 		nome: data.nome,
 		email: data.email,
@@ -15,7 +15,7 @@ const formatRegisterBody = (data) => {
 	});
 };
 
-export const loginUser = (loginData) => {
+export const loginUser = async (loginData) => {
 	return fetch(`${apiURL}login/`, {
 		method: "POST",
 		headers: {
@@ -42,7 +42,7 @@ export const loginUser = (loginData) => {
 		});
 };
 
-export const registerUser = (registerData) => {
+export const registerUser = async (registerData) => {
 	return fetch(`${apiURL}`, {
 		method: "POST",
 		headers: {
@@ -68,7 +68,7 @@ export const registerUser = (registerData) => {
 		});
 };
 
-export const getUserInfos = (userId) => {
+export const getUserInfos = async (userId) => {
 	return fetch(`${apiURL}?id=${userId}`)
 		.then((res) => {
 			switch (res.status) {
@@ -85,7 +85,7 @@ export const getUserInfos = (userId) => {
 		});
 };
 
-export const patchUserInfos = (userId, token, data) => {
+export const patchUserInfos = async (userId, token, data) => {
 	return fetch(`${apiURL}?id=${userId}`, {
 		method: "PATCH",
 		headers: {
