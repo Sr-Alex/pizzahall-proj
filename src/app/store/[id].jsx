@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useLocalSearchParams } from "expo-router";
 
-import globalStyles from "../../../globalStyles";
+import globalStyles from "../../globalStyles";
 
-import { getStore } from "../../../services/api/storeApi";
+import { getStore } from "../../services/api/storeApi";
 
-import MenuContainer from "../../../components/Menu/MenuContainer";
+import MenuContainer from "../../components/Menu/MenuContainer";
 
 export default function StoreContainer() {
 	const { id } = useLocalSearchParams();
@@ -21,8 +21,10 @@ export default function StoreContainer() {
 		setStoreInfos(response);
 	};
 
+	
 	useEffect(() => {
 		getStoreInfo();
+		console.log("renderizou loja")
 	}, [id]);
 
 	return (

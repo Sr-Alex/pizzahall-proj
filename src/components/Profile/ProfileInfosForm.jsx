@@ -47,7 +47,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 
 		if (!response) return;
 
-		router.navigate("(app)");
+		router.navigate("(main)");
 	};
 
 	return (

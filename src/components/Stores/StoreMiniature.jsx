@@ -10,7 +10,7 @@ export default function StoreMiniature({ store = {} }) {
 	return (
 		<Link
 			disabled={!store["id"]}
-			href={`/(app)/store/${store["id"]}`}
+			href={`/store/${store["id"]}`}
 			asChild>
 			<Pressable>
 				<View style={storeStyles.StoreMiniature}>

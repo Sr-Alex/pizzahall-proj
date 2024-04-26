@@ -27,7 +27,7 @@ export default function AppLayout() {
 	return (
 		<UserAuthContext.Provider value={{ userSignedIn, setUserSignedIn }}>
 			<Stack
-				initialRouteName="(app)"
+				initialRouteName="(main)"
 				screenOptions={{ headerShown: false }}></Stack>
 		</UserAuthContext.Provider>
 	);

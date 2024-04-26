@@ -8,6 +8,7 @@ import { getStoreProducts } from "./../../services/api/storeApi";
 
 import ProductSelector from "./../Product/ProductSelector";
 import StoreView from "../Stores/StoreView";
+import BuySelectedMenu from "./BuySelectedMenu";
 
 export default function MenuContainer({ store = {} }) {
 	const [products, setProducts] = useState([]);
@@ -17,12 +18,10 @@ export default function MenuContainer({ store = {} }) {
 
 		if (!response) return;
 
-		console.log(products);
 		setProducts(response);
 	};
 
 	useEffect(() => {
-		console.log("carregou");
 		getProductsInfos();
 	}, [store]);
 
@@ -31,6 +30,7 @@ export default function MenuContainer({ store = {} }) {
 			<ShoppingCartProvider>
 				<StoreView store={store} />
 				<ProductSelector products={products} />
+				<BuySelectedMenu />
 			</ShoppingCartProvider>
 		</View>
 	);

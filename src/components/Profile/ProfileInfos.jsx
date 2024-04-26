@@ -17,7 +17,7 @@ export default function ProfileInfos({ userProfile = {}}) {
 		userSignOut();
 		setUserSignedIn(false);
 
-		router.navigate("(app)");
+		router.navigate("(main)");
 	};
 
 	return (

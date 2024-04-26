@@ -7,15 +7,22 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 	const selectSize = (size) => {
 		if (!select || select["size"] == size) return;
 
-		setSelect({ ...select, id: product.id, size: size });
+		console.log(product["preços"][size]);
+
+		setSelect({
+			...select,
+			id: product.id,
+			price: product["preços"][size],
+			size: size,
+		});
 	};
 
 	return (
 		<View>
 			<Text style={productStyles.SizeSelectorLabel}>Tamanhos</Text>
 			<View style={productStyles.SizeSelector}>
-				{product["tamanhos"] &&
-					Array.from(product["tamanhos"]).map((size, index) => (
+				{product["preços"] &&
+					Object.keys(product["preços"]).map((size, index) => (
 						<TouchableOpacity
 							onPress={() => selectSize(size)}
 							key={index}
@@ -23,8 +30,8 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 								productStyles.sizeMark,
 								select["size"] == size
 									? {
-										backgroundColor:
-											globalStyles.colors.green,
+											backgroundColor:
+												globalStyles.colors.green,
 									  }
 									: {},
 							]}>

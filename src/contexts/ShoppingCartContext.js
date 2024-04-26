@@ -8,7 +8,7 @@ export function ShoppingCartProvider({ children }) {
 	const getProductInCart = (product) => {
 		return cartProducts.find(
 			(prod) =>
-				prod["id"] === product["id"] && prod["size"] == product["size"]
+				prod["id"] === product["id"] && prod["size"] === product["size"]
 		);
 	};
 
@@ -18,7 +18,8 @@ export function ShoppingCartProvider({ children }) {
 		if (productInCart) {
 			setCartProducts(
 				cartProducts.map((prod) =>
-					prod["id"] === product["id"]
+					prod["id"] === product["id"] &&
+					prod["size"] === product["size"]
 						? { ...prod, quantity: prod["quantity"] + 1 }
 						: prod
 				)
@@ -32,19 +33,17 @@ export function ShoppingCartProvider({ children }) {
 		const productInCart = getProductInCart(product);
 
 		if (productInCart && productInCart["quantity"] === 1) {
-			setCartProducts(
-				cartProducts.filter(
-					(prod) =>
-						prod["id"] !== product["id"] &&
-						prod["size"] !== product["size"]
-				)
+			const filteredProducts = cartProducts.filter(
+				(prod) =>
+					prod["id"] !== product["id"] ||
+					prod["size"] !== product["size"]
 			);
+			setCartProducts(filteredProducts);
 		} else {
 			setCartProducts(
 				cartProducts.map((prod) =>
 					prod["id"] === product["id"] &&
-					prod["size"] &&
-					product["size"]
+					prod["size"] == product["size"]
 						? { ...prod, quantity: prod["quantity"] - 1 }
 						: prod
 				)
@@ -56,6 +55,15 @@ export function ShoppingCartProvider({ children }) {
 		setCartProducts([]);
 	};
 
+	const getTotalValue = () => {
+		return cartProducts
+			.reduce(
+				(total, prod) => total + prod["price"] * prod["quantity"],
+				0
+			)
+			.toFixed(2);
+	};
+
 	return (
 		<ShoppingCartContext.Provider
 			value={{
@@ -65,6 +73,7 @@ export function ShoppingCartProvider({ children }) {
 				addProductToCart,
 				removeProductFromCart,
 				clearCartProducts,
+				getTotalValue,
 			}}>
 			{children}
 		</ShoppingCartContext.Provider>

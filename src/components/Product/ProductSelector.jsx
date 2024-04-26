@@ -21,7 +21,7 @@ export default function ProductSelector({ products = [] }) {
 	return (
 		<View style={productStyles.productSelector}>
 			<ProductSlider products={products} setProduct={setCurrentProduct} />
-			<ProductDetails product={currentProduct} />
+			<ProductDetails product={currentProduct} selected={selectedProduct} />
 			<SizeSelector
 				product={currentProduct}
 				select={selectedProduct}

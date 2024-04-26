@@ -8,6 +8,7 @@ export default productStyles = StyleSheet.create({
 
 		width: "100%",
 		height: "auto",
+
 	},
 
 	ProductPager: {

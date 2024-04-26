@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import productStyles from "./productStyles";
 
-export default function ProductDetails({ product = {} }) {
+export default function ProductDetails({ product = {}, selected = {} }) {
 	return (
 		<View>
 			<Text style={productStyles.productTitle}>
@@ -9,9 +9,11 @@ export default function ProductDetails({ product = {} }) {
 			</Text>
 			<Text style={[productStyles.productCurrency]}>R$</Text>
 			<Text style={productStyles.productPrice}>
-				{product["preço"]
-					? parseFloat(product["preço"]).toFixed(2)
-					: "Sem preço"}
+				{selected["price"]
+					? selected["price"].toFixed(2)
+					: product["preços"]
+					? Object.values(product["preços"])[0]
+					: ""}
 			</Text>
 		</View>
 	);
