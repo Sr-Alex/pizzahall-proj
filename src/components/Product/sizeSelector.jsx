@@ -7,11 +7,10 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 	const selectSize = (size) => {
 		if (!select || select["size"] == size) return;
 
-		console.log(product["preços"][size]);
-
 		setSelect({
 			...select,
 			id: product.id,
+			name: product.name,
 			price: product["preços"][size],
 			size: size,
 		});

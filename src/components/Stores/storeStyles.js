@@ -4,7 +4,7 @@ import globalStyles from "./../../globalStyles";
 
 export default storeStyles = StyleSheet.create({
 	StoreList: {
-		flex: 1,
+		flex: 2,
 		width: "80%",
 		paddingVertical: 16,
 
@@ -13,8 +13,7 @@ export default storeStyles = StyleSheet.create({
 	},
 
 	storeName: {
-		fontSize: 20,
-		fontWeight: "bold",
+		...globalStyles.fontSizes.medium,
 
 		color: globalStyles.colors.gray,
 	},
@@ -25,17 +24,21 @@ export default storeStyles = StyleSheet.create({
 		justifyContent: "space-between",
 
 		width: "100%",
-		height: 80,
+		height: 64,
 		paddingHorizontal: 8,
 
 		backgroundColor: globalStyles.colors.offWhite,
 	},
 
+	StoreMiniatureLogo: {
+		...globalStyles.components.roundedImgContainer,
+		height: "100%",
+	},
+
 	miniatureTitle: {
 		marginBottom: 8,
 
-		fontSize: 16,
-		fontWeight: "bold",
+		...globalStyles.fontSizes.medium,
 		textAlign: "right",
 
 		color: globalStyles.colors.darkPurple,

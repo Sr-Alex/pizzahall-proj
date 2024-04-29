@@ -14,12 +14,11 @@ export default globalStyles = {
 
 	components: StyleSheet.create({
 		roundedImgContainer: {
-			width: 64,
-			height: 64,
+			aspectRatio: 1,
 
 			overflow: "hidden",
 
-			borderRadius: 64,
+			borderRadius: 256,
 		},
 
 		img: {
@@ -39,7 +38,6 @@ export default globalStyles = {
 		scroller: {
 			width: "100%",
 			height: "100%",
-			gap: 8,
 
 			overflow: "scroll",
 		},
@@ -54,7 +52,6 @@ export default globalStyles = {
 	fontSizes: {
 		spaced: {
 			fontSize: 20,
-			fontWeight: "normal",
 			letterSpacing: 2,
 		},
 
@@ -70,9 +67,14 @@ export default globalStyles = {
 			letterSpacing: 2,
 		},
 
-		large: {
+		extraLarge: {
 			fontSize: 24,
 			fontWeight: "bold",
+		},
+
+		large: {
+			fontSize: 20,
+            fontWeight: "bold",
 		},
 
 		medium: {

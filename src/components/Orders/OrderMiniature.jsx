@@ -11,7 +11,11 @@ export default function OrderMiniature({ order = {} }) {
 		<View>
 			<View style={orderStyles.OrderMiniature}>
 				<View style={orderStyles.miniatureShow}>
-					<View style={globalStyles.components.roundedImgContainer}>
+					<View
+						style={[
+							globalStyles.components.roundedImgContainer,
+							{ height: "100%" },
+						]}>
 						<Image
 							source={order["logo"] ? order["logo"] : PizzaLogo}
 							style={globalStyles.components.img}
@@ -20,7 +24,11 @@ export default function OrderMiniature({ order = {} }) {
 					<View style={orderStyles.orderMark}>
 						<Text style={orderStyles.orderMarkText}>M</Text>
 					</View>
-					<View style={[orderStyles.orderMark, {backgroundColor: globalStyles.colors.gray}]}>
+					<View
+						style={[
+							orderStyles.orderMark,
+							{ backgroundColor: globalStyles.colors.gray },
+						]}>
 						<Text style={orderStyles.orderMarkText}>Pendente</Text>
 					</View>
 				</View>

@@ -12,7 +12,7 @@ export default function ProductDetails({ product = {}, selected = {} }) {
 				{selected["price"]
 					? selected["price"].toFixed(2)
 					: product["preços"]
-					? Object.values(product["preços"])[0]
+					? Object.values(product["preços"])[0].toFixed(2)
 					: ""}
 			</Text>
 		</View>

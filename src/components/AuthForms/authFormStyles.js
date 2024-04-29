@@ -3,8 +3,8 @@ import globalStyles from "../../globalStyles";
 
 export default authFormStyles = StyleSheet.create({
 	formContainer: {
+		flex: 1,
 		width: 256,
-		height: "auto",
 	},
 
 	titleContainer: {
@@ -55,7 +55,7 @@ export default authFormStyles = StyleSheet.create({
 	},
 
 	formButtonText: {
-		...globalStyles.fontSizes.large,
+		...globalStyles.fontSizes.extraLarge,
 		textAlign: "center",
 
 		color: globalStyles.colors.snowWhite,

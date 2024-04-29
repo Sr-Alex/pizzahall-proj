@@ -37,18 +37,13 @@ export default function ProductSlider({ products = [], setProduct }) {
 
 	return (
 		<View
-			style={{
-				flexDirection: "row",
-				justifyContent: "space-between",
-				alignItems: "center",
-				height: 192,
-			}}>
+			style={productStyles.ProductSlider}>
 			<Pressable
 				onPress={handlePrevProduct}
 				style={{ transform: [{ scaleX: -1 }] }}>
 				<ArrowIcon
-					width={64}
-					height={64}
+					width={48}
+					height={48}
 					fill={globalStyles.colors.lightGray}
 				/>
 			</Pressable>
@@ -66,8 +61,8 @@ export default function ProductSlider({ products = [], setProduct }) {
 
 			<Pressable onPress={handleNextProduct}>
 				<ArrowIcon
-					width={64}
-					height={64}
+					width={48}
+					height={48}
 					fill={globalStyles.colors.lightGray}
 				/>
 			</Pressable>

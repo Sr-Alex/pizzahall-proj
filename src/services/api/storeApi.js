@@ -26,7 +26,7 @@ const storesPlaceholder = [
 
 const pizzasPlaceholder = [
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "8e8fd3a7-8bf6-4479-94f8-5f326eae31b1",
 		pizzaria_id: "a912a063-2ef1-4878-86b4-66af3085779c",
 		name: "Pizza Frango com catupiri",
 		"preços": {
@@ -65,7 +65,7 @@ const pizzasPlaceholder = [
 	},
 
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "8c71b8a6-1603-4d71-8935-4dcc1a178c92",
 		pizzaria_id: "99595765-908a-4a9c-bd5a-b96948cd6c4e",
 		name: "Pizza sabor Marguerita",
 		"preços": {
@@ -78,7 +78,7 @@ const pizzasPlaceholder = [
 		logo: "https://picsum.photos/500",
 	},
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "6b6cda50-38aa-4878-8035-e7fa7aa8404b",
 		pizzaria_id: "99595765-908a-4a9c-bd5a-b96948cd6c4e",
 		name: "Pizza sabor Napolitana",
 		"preços": {
@@ -91,7 +91,7 @@ const pizzasPlaceholder = [
 		logo: "https://picsum.photos/500",
 	},
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "16fe0923-5847-455a-a9af-c1f130bdf51d",
 		pizzaria_id: "99595765-908a-4a9c-bd5a-b96948cd6c4e",
 		name: "Pizza sabor Muçarela",
 		"preços": {
@@ -104,7 +104,7 @@ const pizzasPlaceholder = [
 	},
 
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "dd36f92d-8fed-4309-a90f-52794aa10829",
 		pizzaria_id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
 		name: "Pizza sabor Lombo canadense ",
 		"preços": {
@@ -116,7 +116,7 @@ const pizzasPlaceholder = [
 		logo: "https://picsum.photos/500",
 	},
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "2d3f48c9-7362-4f02-b0f9-ed4d82c253dd",
 		pizzaria_id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
 		name: "Pizza Quatro queijos ",
 		"preços": {
@@ -128,7 +128,7 @@ const pizzasPlaceholder = [
 		logo: "https://picsum.photos/500",
 	},
 	{
-		id: "12e7cf06-bc03-4a5e-8aed-a08165ae0d98",
+		id: "8ffd2b0e-4ae5-41e6-883c-de13fcfa3bf3",
 		pizzaria_id: "d6fc2f12-a1d0-48f6-971c-5d9f59ae0fa8",
 		name: "Pizza sabor Califórnia ",
 		"preços": {

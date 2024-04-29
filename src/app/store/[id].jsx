@@ -32,7 +32,7 @@ export default function StoreContainer() {
 			<MenuContainer store={storeInfos} />
 		</SafeAreaView>
 	);
-}
+} 
 
 const styles = StyleSheet.create({
 	contentContainer: {

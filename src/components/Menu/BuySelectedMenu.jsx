@@ -25,7 +25,7 @@ export default function BuySelectedMenu() {
 		<View style={menuStyles.BuySelectedMenu}>
 			<Text
 				style={[
-					globalStyles.fontSizes.spacedTitle,
+					globalStyles.fontSizes.spacedLabel,
 					{ color: globalStyles.colors.black},
 				]}>
 				R$

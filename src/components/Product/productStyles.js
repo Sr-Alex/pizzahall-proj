@@ -1,57 +1,61 @@
 import { StyleSheet } from "react-native";
+
 import globalStyles from "../../globalStyles";
 
 export default productStyles = StyleSheet.create({
 	productSelector: {
+		flex: 2,
+		justifyContent: "space-between",
 		alignItems: "center",
-		gap: 16,
+		gap: 8,
 
 		width: "100%",
-		height: "auto",
+	},
 
+	ProductSlider: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: "100%",
+		height: "30%",
+	},
+
+	ProductView: {
+		...globalStyles.components.roundedImgContainer,
+		height: "100%",
 	},
 
 	ProductPager: {
-		width: 192,
-		height: 192,
-	},
-
-	productView: {
-		width: 192,
-		height: 192,
-
-		overflow: "hidden",
-
-		borderRadius: 256,
+		height: "100%",
+		aspectRatio: 1,
 	},
 
 	productTitle: {
-		width: 256,
-		height: 64,
+		width: 192,
+		height: "auto",
+		maxHeight: 64,
 
 		marginTop: 4,
 		marginBottom: 8,
 
-		fontSize: 20,
-		fontWeight: "600",
+		...globalStyles.fontSizes.medium,
 		textAlign: "center",
 
 		color: globalStyles.colors.black,
 	},
 
 	productCurrency: {
-		fontSize: 20,
-		fontWeight: "bold",
+		...globalStyles.fontSizes.medium,
 		textAlign: "center",
 
 		color: globalStyles.colors.gray,
 	},
 
 	productPrice: {
-		fontSize: 20,
+		...globalStyles.fontSizes.spaced,
 		fontWeight: "bold",
 		textAlign: "center",
-		letterSpacing: 4,
 
 		color: globalStyles.colors.black,
 	},
@@ -60,14 +64,15 @@ export default productStyles = StyleSheet.create({
 		flexDirection: "row",
 		flexWrap: "wrap",
 		justifyContent: "space-evenly",
-		gap: 8,
+		gap: 4,
 
-		width: 256,
-		marginTop: 16,
+		width: 224,
+		maxHeight: 112,
+		marginTop: 8,
 	},
 
 	SizeSelectorLabel: {
-		...globalStyles.fontSizes.medium,
+		...globalStyles.fontSizes.large,
 		textAlign: "center",
 
 		color: globalStyles.colors.gray,
@@ -77,15 +82,15 @@ export default productStyles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 
-		width: 64,
 		height: 48,
+		aspectRatio: 1,
 
 		backgroundColor: globalStyles.colors.gray,
-		borderRadius: 16,
+		borderRadius: 8,
 	},
 
 	sizeMarkText: {
-		fontSize: 24,
+		...globalStyles.fontSizes.extraLarge,
 		fontWeight: "bold",
 
 		color: globalStyles.colors.offWhite,
@@ -96,13 +101,12 @@ export default productStyles = StyleSheet.create({
 		justifyContent: "space-between",
 		alignItems: "center",
 
-		width: 256,
-		height: 48,
+		width: 192,
+		height: 32,
 	},
 
 	SelectProductText: {
-		fontSize: 20,
-		fontWeight: "600",
+		...globalStyles.fontSizes.spaced,
 
 		color: globalStyles.colors.gray,
 	},

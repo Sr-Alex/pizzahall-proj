@@ -14,7 +14,7 @@ export default function StoreMiniature({ store = {} }) {
 			asChild>
 			<Pressable>
 				<View style={storeStyles.StoreMiniature}>
-					<View style={globalStyles.components.roundedImgContainer}>
+					<View style={storeStyles.StoreMiniatureLogo}>
 						<Image
 							source={
 								store["imgUrl"]
@@ -38,12 +38,6 @@ export default function StoreMiniature({ store = {} }) {
 						</Text>
 					</View>
 				</View>
-				<View
-					style={[
-						globalStyles.components.centeredBorder,
-						{ backgroundColor: globalStyles.colors.black },
-					]}
-				/>
 			</Pressable>
 		</Link>
 	);

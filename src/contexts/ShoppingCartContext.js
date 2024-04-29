@@ -14,7 +14,6 @@ export function ShoppingCartProvider({ children }) {
 
 	const addProductToCart = (product) => {
 		const productInCart = getProductInCart(product);
-
 		if (productInCart) {
 			setCartProducts(
 				cartProducts.map((prod) =>
@@ -51,6 +50,19 @@ export function ShoppingCartProvider({ children }) {
 		}
 	};
 
+	const removeProductFromAllCart = (product) => {
+		const productInCart = getProductInCart(product);
+
+		if (productInCart) {
+			const filteredProducts = cartProducts.filter(
+                (prod) =>
+                    prod["id"]!== product["id"] ||
+                    prod["size"]!== product["size"]
+            );
+            setCartProducts(filteredProducts);
+		}
+	}
+
 	const clearCartProducts = () => {
 		setCartProducts([]);
 	};
@@ -72,6 +84,7 @@ export function ShoppingCartProvider({ children }) {
 				getProductInCart,
 				addProductToCart,
 				removeProductFromCart,
+				removeProductFromAllCart,
 				clearCartProducts,
 				getTotalValue,
 			}}>

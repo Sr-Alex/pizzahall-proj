@@ -1,4 +1,9 @@
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import {
+	Image,
+	ScrollView,
+	StyleSheet,
+	View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 
@@ -35,10 +40,11 @@ export default function Auth() {
 
 const styles = StyleSheet.create({
 	AuthPage: {
+		flex: 1,
 		alignItems: "center",
 
 		width: "100%",
-		height: "100%",
+		marginBottom: 8,
 
 		backgroundColor: globalStyles.colors.snowWhite,
 	},
@@ -52,26 +58,26 @@ const styles = StyleSheet.create({
 
 	crossSquare: {
 		position: "absolute",
-		top: "25%",
+		top: "35%",
 		zIndex: -1,
 
-		transform: [{ rotateZ: "75deg" }],
+		transform: [{ rotateZ: "-15deg" }],
 
-		width: "150%",
-		height: "100%",
+		width: "200%",
+		height: "150%",
 
 		backgroundColor: globalStyles.colors.offWhite,
 	},
 
 	crossBand: {
 		position: "absolute",
-		top: "30%",
+		top: "25%",
 		zIndex: -1,
 
 		transform: [{ rotateZ: "-15deg" }],
 
-		width: "150%",
-		height: 48,
+		width: "200%",
+		height: "5%",
 
 		backgroundColor: globalStyles.colors.orange,
 	},

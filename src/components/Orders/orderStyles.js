@@ -3,10 +3,10 @@ import globalStyles from "../../globalStyles";
 
 export default orderStyles = StyleSheet.create({
 	OrdersList: {
+		flex: 1,
 		width: "90%",
-		height: "80%",
 		paddingVertical: 16,
-		paddingHorizontal: 16,
+		paddingHorizontal: 8,
 
 		backgroundColor: globalStyles.colors.offWhite,
 		borderRadius: 16,
@@ -17,7 +17,7 @@ export default orderStyles = StyleSheet.create({
 		justifyContent: "space-between",
 
 		width: "100%",
-		height: 80,
+		height: 64,
 	},
 
 	miniatureShow: {

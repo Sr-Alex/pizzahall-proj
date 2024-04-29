@@ -9,6 +9,7 @@ import { getStoreProducts } from "./../../services/api/storeApi";
 import ProductSelector from "./../Product/ProductSelector";
 import StoreView from "../Stores/StoreView";
 import BuySelectedMenu from "./BuySelectedMenu";
+import MenuProductList from "./MenuProductsList";
 
 export default function MenuContainer({ store = {} }) {
 	const [products, setProducts] = useState([]);
@@ -30,6 +31,7 @@ export default function MenuContainer({ store = {} }) {
 			<ShoppingCartProvider>
 				<StoreView store={store} />
 				<ProductSelector products={products} />
+				<MenuProductList />
 				<BuySelectedMenu />
 			</ShoppingCartProvider>
 		</View>
