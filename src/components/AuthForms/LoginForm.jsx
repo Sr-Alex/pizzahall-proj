@@ -18,6 +18,7 @@ import UserAuthContext from "../../contexts/UserAuthContext";
 
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
+import { Toast } from "toastify-react-native";
 
 export default function LoginForm({ toggleLayout = () => {} }) {
 	const { setUserSignedIn } = useContext(UserAuthContext);
@@ -31,7 +32,7 @@ export default function LoginForm({ toggleLayout = () => {} }) {
 	};
 
 	const doLogin = async () => {
-		if (!validateLogin(loginData.email, loginData.password)) return;
+		if (!validateLogin(loginData.email, loginData.password, Toast)) return;
 
 		setIsLoading(true);
 

@@ -1,9 +1,4 @@
-import {
-	Image,
-	ScrollView,
-	StyleSheet,
-	View,
-} from "react-native";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 
@@ -13,6 +8,7 @@ import RegisterForm from "../components/AuthForms/RegisterForm";
 import LoginForm from "../components/AuthForms/LoginForm";
 
 import PizzaLogo from "../assets/img/pizza.jpg";
+import ToastManager from "toastify-react-native";
 
 export default function Auth() {
 	const [isLoginLayout, setIsLoginLayout] = useState(true);
@@ -22,6 +18,13 @@ export default function Auth() {
 	};
 	return (
 		<SafeAreaView style={styles.AuthPage}>
+			<ToastManager
+				position={"top"}
+				width={"80%"}
+				height={64}
+				duration={3000}
+				textStyle={{ fontSize: 14, width: "80%" }}
+			/>
 			<View style={styles.imgContainer}>
 				<Image source={PizzaLogo} style={globalStyles.components.img} />
 			</View>
