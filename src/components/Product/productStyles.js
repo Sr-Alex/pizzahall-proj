@@ -82,6 +82,25 @@ export default productStyles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 
+		width: 24,
+		aspectRatio: 1,
+
+		backgroundColor: globalStyles.colors.gray,
+		borderRadius: 4,
+	},
+
+	sizeMarkText: {
+		...globalStyles.fontSizes.medium,
+		fontWeight: "bold",
+		textAlign: "center",
+
+		color: globalStyles.colors.offWhite,
+	},
+
+	sizeMarkButton: {
+		alignItems: "center",
+		justifyContent: "center",
+
 		height: 48,
 		aspectRatio: 1,
 
@@ -89,7 +108,7 @@ export default productStyles = StyleSheet.create({
 		borderRadius: 8,
 	},
 
-	sizeMarkText: {
+	sizeMarkButtonText: {
 		...globalStyles.fontSizes.extraLarge,
 		fontWeight: "bold",
 

@@ -115,7 +115,7 @@ export default profileStyles = StyleSheet.create({
 		alignItems: "center",
 		gap: 8,
 
-		height: 32,
+		height: 48,
 	},
 
 	infosInput: {

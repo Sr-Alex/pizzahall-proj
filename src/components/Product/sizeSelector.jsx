@@ -26,7 +26,7 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 							onPress={() => selectSize(size)}
 							key={index}
 							style={[
-								productStyles.sizeMark,
+								productStyles.sizeMarkButton,
 								select["size"] == size
 									? {
 											backgroundColor:
@@ -34,7 +34,7 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 									  }
 									: {},
 							]}>
-							<Text style={productStyles.sizeMarkText}>
+							<Text style={productStyles.sizeMarkButtonText}>
 								{size}
 							</Text>
 						</TouchableOpacity>

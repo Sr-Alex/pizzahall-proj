@@ -60,11 +60,9 @@ export default menuStyles = StyleSheet.create({
 		flex: 1,
 		width: "100%",
 		maxHeight: "15%",
-		
+
 		marginBottom: 48,
-		paddingHorizontal: 8,
-		paddingTop: 8,
-		paddingBottom: 16,
+		paddingVertical: 8,
 
 		backgroundColor: globalStyles.colors.lightGray,
 		borderRadius: 8,
@@ -74,5 +72,33 @@ export default menuStyles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
+	},
+
+	ShowMenuProductDetails: {
+		flex: 4,
+		flexDirection: "row",
+		justifyContent: "space-between",
+		alignItems: "center",
+		gap: 4,
+
+		paddingLeft: 4,
+		paddingRight: 16,
+	},
+
+	ShowMenuProductDetailsText: {
+		...globalStyles.fontSizes.small,
+
+		width: "60%",
+		maxHeight: 40,
+
+		color: globalStyles.colors.black,
+	},
+
+	ShowMenuProductButton: {
+		flex: 1,
+		alignItems: "flex-end",
+
+		maxWidth: 24,
+
 	},
 });

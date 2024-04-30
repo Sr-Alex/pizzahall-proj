@@ -36,7 +36,7 @@ export default storeStyles = StyleSheet.create({
 	},
 
 	miniatureTitle: {
-		marginBottom: 8,
+		marginBottom: 4,
 
 		...globalStyles.fontSizes.medium,
 		textAlign: "right",
@@ -45,8 +45,6 @@ export default storeStyles = StyleSheet.create({
 	},
 
 	miniatureText: {
-		marginVertical: 2,
-
 		fontSize: 12,
 		textAlign: "right",
 	},

@@ -45,8 +45,8 @@ export default function SelectProduct({ selected }) {
 		<View style={productStyles.SelectProduct}>
 			<TouchableOpacity onPress={handleRemove}>
 				<MinusIcon
-					width={32}
-					height={32}
+					width={48}
+					height={48}
 					fill={globalStyles.colors.gray}
 				/>
 			</TouchableOpacity>
@@ -55,8 +55,8 @@ export default function SelectProduct({ selected }) {
 
 			<TouchableOpacity onPress={handleAdd}>
 				<AddIcon
-					width={32}
-					height={32}
+					width={48}
+					height={48}
 					fill={globalStyles.colors.green}
 				/>
 			</TouchableOpacity>
