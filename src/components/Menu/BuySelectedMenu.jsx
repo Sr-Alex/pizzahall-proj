@@ -6,27 +6,37 @@ import menuStyles from "./menuStyles";
 import globalStyles from "../../globalStyles";
 
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
-import UserAuthContext from './../../contexts/UserAuthContext';
+import UserAuthContext from "./../../contexts/UserAuthContext";
 
 import BagIcon from "../../assets/icons/bagIcon.svg";
-
+import { Toast } from "toastify-react-native";
 
 export default function BuySelectedMenu() {
 	const { userSignedIn } = useContext(UserAuthContext);
 	const { cartProducts, getTotalValue } = useContext(ShoppingCartContext);
 
 	const handleBuy = () => {
-		if (!userSignedIn) return router.navigate("(main)/Profile");
+		if (!userSignedIn) {
+			Toast.warn("Você precisa ter uma conta com os dados preenchidos");
+			router.navigate("(main)/Profile");
 
-		console.warn("produtos comprados")
-	}
+			return;
+		}
+
+		if (!cartProducts.length) {
+			Toast.warn("Seu carrinho está vazio.");
+			return;
+		}
+
+		Toast.success("Seu pedido foi enviado!")
+	};
 
 	return (
 		<View style={menuStyles.BuySelectedMenu}>
 			<Text
 				style={[
 					globalStyles.fontSizes.spacedLabel,
-					{ color: globalStyles.colors.black},
+					{ color: globalStyles.colors.black },
 				]}>
 				R$
 				{cartProducts ? getTotalValue() : ""}

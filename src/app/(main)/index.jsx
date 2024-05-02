@@ -42,6 +42,5 @@ const styles = StyleSheet.create({
 		paddingBottom: 32,
 
 		backgroundColor: globalStyles.colors.orange,
-		borderRadius: 16,
 	},
 });

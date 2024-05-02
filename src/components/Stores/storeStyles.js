@@ -9,7 +9,7 @@ export default storeStyles = StyleSheet.create({
 		paddingVertical: 16,
 
 		backgroundColor: globalStyles.colors.offWhite,
-		borderRadius: 16,
+		borderRadius: 8,
 	},
 
 	storeName: {
