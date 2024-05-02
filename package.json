@@ -23,7 +23,8 @@
     "react-native-screens": "~3.29.0",
     "react-native-svg": "14.1.0",
     "toastify-react-native": "^5.0.0",
-    "undefined": ".env"
+    "undefined": ".env",
+    "react-native-reanimated": "~3.6.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

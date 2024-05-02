@@ -12,9 +12,10 @@ export default function TabsLayout() {
 			backBehavior="initialRoute"
 			screenOptions={{
 				headerShown: false,
+				tabBarShowLabel: false,
 				tabBarActiveTintColor: globalStyles.colors.black,
 				tabBarInactiveTintColor: globalStyles.colors.gray,
-				tabBarShowLabel: true,
+				tabBarStyle: { backgroundColor: globalStyles.colors.snowWhite },
 			}}>
 			<Tabs.Screen
 				name="Orders"
