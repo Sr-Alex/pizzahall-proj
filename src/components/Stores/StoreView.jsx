@@ -10,15 +10,10 @@ export default function StoreView({ store = {} }) {
 	return (
 		<View style={menuStyles.MenuStoreShow}>
 			<View style={menuStyles.MenuStoreShowLogo}>
-				<Image
-					source={
-						store["imgUrl"] ? { uri: store["imgUrl"] } : PizzaLogo
-					}
-					style={globalStyles.components.img}
-				/>
+				<Image source={PizzaLogo} style={globalStyles.components.img} />
 			</View>
 			<Text style={storeStyles.storeName}>
-				{store["name"] ? store["name"] : "Loja vazia"}
+				{store["nome"] ? store["nome"] : "Loja vazia"}
 			</Text>
 		</View>
 	);

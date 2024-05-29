@@ -31,7 +31,7 @@ export default function ProfileLayout() {
 
 	useEffect(() => {
 		getProfile();
-	});
+	}, []);
 
 	return (
 		<SafeAreaView style={styles.contentContainer}>
@@ -54,6 +54,5 @@ const styles = StyleSheet.create({
 		paddingBottom: 32,
 
 		backgroundColor: globalStyles.colors.orange,
-		borderRadius: 24,
 	},
 });

@@ -19,7 +19,9 @@ export default function MenuContainer({ store = {} }) {
 
 		if (!response) return;
 
-		setProducts(response);
+		setProducts(response)
+		console.log("Produtos " + response)
+		console.log(response)
 	};
 
 	useEffect(() => {

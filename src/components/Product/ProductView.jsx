@@ -9,9 +9,7 @@ export default function ProductView({ product = {} }) {
 		<View>
 			<View style={productStyles.ProductView}>
 				<Image
-					source={{
-						uri: product["logo"],
-					}}
+					source={PizzaLogo}
 					defaultSource={PizzaLogo}
 					style={globalStyles.components.img}
 				/>

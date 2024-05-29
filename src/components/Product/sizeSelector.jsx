@@ -10,8 +10,8 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 		setSelect({
 			...select,
 			id: product.id,
-			name: product.name,
-			price: product["preços"][size],
+			name: product.nome,
+			price: product["preco"],
 			size: size,
 		});
 	};
@@ -20,8 +20,8 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 		<View>
 			<Text style={productStyles.SizeSelectorLabel}>Tamanhos</Text>
 			<View style={productStyles.SizeSelector}>
-				{product["preços"] &&
-					Object.keys(product["preços"]).map((size, index) => (
+				{product["preco"] &&
+					["P", "M", "G"].map((size, index) => (
 						<TouchableOpacity
 							onPress={() => selectSize(size)}
 							key={index}

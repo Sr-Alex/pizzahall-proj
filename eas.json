@@ -7,14 +7,14 @@
 			"developmentClient": true,
 			"distribution": "internal",
 			"env": {
-				"EXPO_PUBLIC_API_URL": "https://pizzahall.onrender.com/"
+				"EXPO_PUBLIC_API_URL": "https://api-pizzahall.onrender.com/"
 			}
 		},
 		"preview": {
 			"developmentClient": false,
 			"distribution": "internal",
 			"env": {
-				"EXPO_PUBLIC_API_URL": "https://pizzahall.onrender.com/"
+				"EXPO_PUBLIC_API_URL": "https://api-pizzahall.onrender.com/"
 			},
 			"android": {
 				"buildType": "apk"

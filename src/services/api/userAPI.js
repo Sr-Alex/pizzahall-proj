@@ -1,18 +1,18 @@
 import apiURL from "./apiSecret";
 import secure from "../secure";
 
-const formatRegisterBody = async (data) => {
-	return JSON.stringify({
+const formatRegisterBody = (data) => {
+	const res = JSON.stringify({
 		nome: data.nome,
 		email: data.email,
 		password: data.password,
-		passwordconfirm: data.passwordconfirm,
-		cpf: "",
-		telefone: "",
-		is_google: "false",
-		id_google: "",
-		is_cliente: "True",
+		confirm: data.passwordconfirm,
+		isGoogle: "True",
+		googleId: "",
+		isCliente: "True",
 	});
+	res;
+	return res;
 };
 
 export const loginUser = async (loginData) => {
@@ -24,12 +24,12 @@ export const loginUser = async (loginData) => {
 		body: JSON.stringify(loginData),
 	})
 		.then((res) => {
-			console.log(res.status);
+			res.status;
 			switch (res.status) {
 				case 200:
 					return res.json();
 				default:
-					return res.status;
+					return new Error(res.status);
 			}
 		})
 		.then((data) => {
@@ -63,7 +63,7 @@ export const registerUser = async (registerData) => {
 			return data;
 		})
 		.catch((error) => {
-			console.warn(error);
+			console.error(`Falha ao registrar usuário: ${error}`);
 			return null;
 		});
 };
@@ -80,7 +80,7 @@ export const getUserInfos = async (userId) => {
 		})
 		.then((data) => data)
 		.catch((error) => {
-			console.error(error);
+			console.error(`Erro ao buscar usuário: ${error}`);
 			return null;
 		});
 };
@@ -104,7 +104,7 @@ export const patchUserInfos = async (userId, token, data) => {
 		})
 		.then((data) => data)
 		.catch((error) => {
-			console.warn(error);
+			console.warn(`Falha ao modificar usuário: ${error.message}`);
 			return null;
 		});
 };

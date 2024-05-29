@@ -9,11 +9,13 @@ export default function SubmitButton({
 }) {
 	return (
 		<Pressable
-			disabled={disabled}
+			disabled={disabled || loading}
 			onPress={onPress}
 			style={[
 				styles.button,
-				disabled ? styles.buttonDisabled : styles.buttonEnabled,
+				disabled || loading
+					? styles.buttonDisabled
+					: styles.buttonEnabled,
 			]}>
 			{loading ? (
 				<ActivityIndicator

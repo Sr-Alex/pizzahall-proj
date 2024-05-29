@@ -33,7 +33,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 	};
 
 	const doInfosPatch = async () => {
-		console.log(personalInfos);
+		personalInfos;
 		setIsLoading(true);
 
 		const auth = await secure.getStoredAuth();
@@ -57,7 +57,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 					<Text
 						style={[
 							globalStyles.fontSizes.spacedLabel,
-							{ flex: 1,color: globalStyles.colors.black },
+							{ flex: 1, color: globalStyles.colors.black },
 						]}>
 						telefone:
 					</Text>
@@ -66,7 +66,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 						textContentType="telephoneNumber"
 						returnKeyType="next"
 						placeholder={
-							userProfile["Telefone"] || "Seu telefone aqui"
+							userProfile["telefone"] || "Seu telefone aqui"
 						}
 						editable={isModifying}
 						value={personalInfos["telefone"]}
@@ -78,14 +78,14 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 					<Text
 						style={[
 							globalStyles.fontSizes.spacedLabel,
-							{ flex: 1,color: globalStyles.colors.black },
+							{ flex: 1, color: globalStyles.colors.black },
 						]}>
 						CPF:
 					</Text>
 					<TextInput
 						keyboardType="number-pad"
 						returnKeyType="next"
-						placeholder={userProfile["CPF"] || "Seu CPF aqui"}
+						placeholder={userProfile["cpf"] || "Seu CPF aqui"}
 						editable={isModifying}
 						value={personalInfos["cpf"]}
 						onChangeText={(value) => changeData("cpf", value)}
@@ -96,7 +96,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 					<Text
 						style={[
 							globalStyles.fontSizes.spacedLabel,
-							{ flex: 1,color: globalStyles.colors.black },
+							{ flex: 1, color: globalStyles.colors.black },
 						]}>
 						Data de nascimento:
 					</Text>
@@ -108,8 +108,8 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 							userProfile["Data de Nascimento"] || "YYYY-MM-DD"
 						}
 						editable={isModifying}
-						value={personalInfos["data_nasc"]}
-						onChangeText={(value) => changeData("data_nasc", value)}
+						value={personalInfos["dataNasc"]}
+						onChangeText={(value) => changeData("dataNasc", value)}
 						style={profileStyles.infosInput}
 					/>
 				</View>

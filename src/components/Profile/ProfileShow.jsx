@@ -16,7 +16,7 @@ export default function ProfileShow({ isSigned = false, userProfile = {} }) {
 			</View>
 			<View style={profileStyles.showUserName}>
 				<Text style={profileStyles.showUserNameText}>
-					{isSigned ? userProfile["Nome"] : "Convidado"}
+					{isSigned ? userProfile["nome"] : "Convidado"}
 				</Text>
 			</View>
 		</View>

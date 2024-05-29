@@ -13,7 +13,8 @@ import { Toast } from "toastify-react-native";
 
 export default function BuySelectedMenu() {
 	const { userSignedIn } = useContext(UserAuthContext);
-	const { cartProducts, getTotalValue } = useContext(ShoppingCartContext);
+	const { cartProducts, getTotalValue, clearCartProducts } =
+		useContext(ShoppingCartContext);
 
 	const handleBuy = () => {
 		if (!userSignedIn) {
@@ -28,7 +29,8 @@ export default function BuySelectedMenu() {
 			return;
 		}
 
-		Toast.success("Seu pedido foi enviado!")
+		clearCartProducts();
+		Toast.success("Seu pedido foi enviado!");
 	};
 
 	return (

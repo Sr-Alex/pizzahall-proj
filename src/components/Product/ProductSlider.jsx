@@ -33,11 +33,11 @@ export default function ProductSlider({ products = [], setProduct }) {
 
 	useEffect(() => {
 		resetSlider();
+		console.log(products)
 	}, [products]);
 
 	return (
-		<View
-			style={productStyles.ProductSlider}>
+		<View style={productStyles.ProductSlider}>
 			<Pressable
 				onPress={handlePrevProduct}
 				style={{ transform: [{ scaleX: -1 }] }}>
@@ -54,7 +54,7 @@ export default function ProductSlider({ products = [], setProduct }) {
 				onPageSelected={(prod) => handlePageSelect(prod)}
 				initialPage={0}
 				style={productStyles.ProductPager}>
-				{products.map((prod, index) => (
+				{Array.from(products).map((prod, index) => (
 					<ProductView key={index} product={prod} />
 				))}
 			</PagerView>
