@@ -5,17 +5,18 @@ import {
 	TextInput,
 	View,
 } from "react-native";
-import { useState } from "react";
+import { router } from "expo-router";
+import { useContext, useState } from "react";
+
+import { ProfileContext } from "../../contexts/ProfileContext";
 
 import profileStyles from "./profileStyles";
 
 import CloseIcon from "../../assets/icons/closeIcon.svg";
 import globalStyles from "../../globalStyles";
-import secure from "../../services/secure";
-import { patchUserInfos } from "../../services/api/userAPI";
-import { router } from "expo-router";
 
-export default function ProfileInfosForm({ userProfile = {} }) {
+export default function ProfileInfosForm() {
+	const { profile, modifyUser } = useContext(ProfileContext);
 	const [isModifying, setIsModifying] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
@@ -33,19 +34,11 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 	};
 
 	const doInfosPatch = async () => {
-		personalInfos;
 		setIsLoading(true);
 
-		const auth = await secure.getStoredAuth();
-		const response = await patchUserInfos(
-			auth.id,
-			auth.token,
-			personalInfos
-		);
+		modifyUser(personalInfos);
 
 		setIsLoading(false);
-
-		if (!response) return;
 
 		router.navigate("(main)");
 	};
@@ -65,9 +58,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 						keyboardType="phone-pad"
 						textContentType="telephoneNumber"
 						returnKeyType="next"
-						placeholder={
-							userProfile["telefone"] || "Seu telefone aqui"
-						}
+						placeholder={profile["telefone"] || "Seu telefone aqui"}
 						editable={isModifying}
 						value={personalInfos["telefone"]}
 						onChangeText={(value) => changeData("telefone", value)}
@@ -85,7 +76,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 					<TextInput
 						keyboardType="number-pad"
 						returnKeyType="next"
-						placeholder={userProfile["cpf"] || "Seu CPF aqui"}
+						placeholder={profile["cpf"] || "Seu CPF aqui"}
 						editable={isModifying}
 						value={personalInfos["cpf"]}
 						onChangeText={(value) => changeData("cpf", value)}
@@ -105,7 +96,7 @@ export default function ProfileInfosForm({ userProfile = {} }) {
 						returnKeyType="next"
 						textContentType="birthdateDay"
 						placeholder={
-							userProfile["Data de Nascimento"] || "YYYY-MM-DD"
+							profile["Data de Nascimento"] || "YYYY-MM-DD"
 						}
 						editable={isModifying}
 						value={personalInfos["dataNasc"]}

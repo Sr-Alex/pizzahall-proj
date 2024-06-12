@@ -1,10 +1,18 @@
+import { useContext } from "react";
 import { Text, View } from "react-native";
+
+import { ProfileContext } from "../../contexts/ProfileContext";
+import { UserAuthContext } from "../../contexts/UserAuthContext";
+
+import globalStyles from "../../globalStyles";
 import profileStyles from "./profileStyles";
 
 import ProfileIcon from "../../assets/icons/profileIcon.svg";
-import globalStyles from "../../globalStyles";
 
-export default function ProfileShow({ isSigned = false, userProfile = {} }) {
+export default function ProfileShow() {
+	const { userSignedIn } = useContext(UserAuthContext);
+	const { profile } = useContext(ProfileContext);
+
 	return (
 		<View style={profileStyles.ProfileShow}>
 			<View style={profileStyles.profileImageContainer}>
@@ -16,7 +24,7 @@ export default function ProfileShow({ isSigned = false, userProfile = {} }) {
 			</View>
 			<View style={profileStyles.showUserName}>
 				<Text style={profileStyles.showUserNameText}>
-					{isSigned ? userProfile["nome"] : "Convidado"}
+					{userSignedIn ? profile["nome"] : "Convidado"}
 				</Text>
 			</View>
 		</View>

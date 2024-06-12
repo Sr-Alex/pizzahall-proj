@@ -7,22 +7,20 @@ import {
 } from "react-native";
 import { useContext, useState } from "react";
 import { router } from "expo-router";
+import { Toast } from "toastify-react-native";
 
+import { UserAuthContext } from "../../contexts/UserAuthContext";
 import { validateLogin } from "./../../services/validadores";
-import { loginUser } from "./../../services/api/userAPI";
 
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
 
-import UserAuthContext from "../../contexts/UserAuthContext";
 
 import SubmitButton from "../Inputs/SubmitButton";
 import PasswordInput from "./PasswordInput";
-import { Toast } from "toastify-react-native";
 
 export default function LoginForm({ toggleLayout = () => {} }) {
-	const { setUserSignedIn } = useContext(UserAuthContext);
-
+	const { makeLogin } = useContext(UserAuthContext);
 	const [loginData, setLoginData] = useState({ email: "", password: "" });
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -31,18 +29,21 @@ export default function LoginForm({ toggleLayout = () => {} }) {
 		setLoginData({ ...loginData, [input]: value });
 	};
 
-	const doLogin = async () => {
-		if (!validateLogin(loginData.email, loginData.password, Toast)) return;
+	const handleLogin = async () => {
+		if (!validateLogin(loginData)) {
+			Toast.warn("Campos inválidos!");
+			return;
+		}
 
 		setIsLoading(true);
 
-		const response = await loginUser(loginData);
+		const login = await makeLogin(loginData);
+		if (!login) {
+			Toast.error("Falha ao tentar efetuar login.");
+		}
+		//Toast.success("Bem-vindo(a)!");
 
 		setIsLoading(false);
-
-		if (!response) return;
-
-		setUserSignedIn(true);
 
 		router.back();
 	};
@@ -74,7 +75,7 @@ export default function LoginForm({ toggleLayout = () => {} }) {
 					<Text style={authFormStyles.formInputLabel}>Senha</Text>
 					<PasswordInput field="password" changeData={changeData} />
 				</View>
-				<SubmitButton disabled={isLoading} onPress={doLogin}>
+				<SubmitButton disabled={isLoading} onPress={handleLogin}>
 					{isLoading ? (
 						<ActivityIndicator
 							size={"large"}

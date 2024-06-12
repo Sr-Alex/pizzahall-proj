@@ -34,7 +34,7 @@ export default function MenuContainer({ store = {} }) {
 				<StoreView store={store} />
 				<ProductSelector products={products} />
 				<MenuProductList />
-				<BuySelectedMenu />
+				<BuySelectedMenu store={store} />
 			</ShoppingCartProvider>
 		</View>
 	);

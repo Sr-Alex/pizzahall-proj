@@ -1,22 +1,24 @@
 import { useContext } from "react";
 import { Pressable, Text, View } from "react-native";
 import { router } from "expo-router";
+import { Toast } from "toastify-react-native";
+
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
+import { UserAuthContext } from "./../../contexts/UserAuthContext";
+
+import { createPedido } from "../../services/api/orderApi";
 
 import menuStyles from "./menuStyles";
 import globalStyles from "../../globalStyles";
 
-import { ShoppingCartContext } from "../../contexts/ShoppingCartContext";
-import UserAuthContext from "./../../contexts/UserAuthContext";
-
 import BagIcon from "../../assets/icons/bagIcon.svg";
-import { Toast } from "toastify-react-native";
 
-export default function BuySelectedMenu() {
-	const { userSignedIn } = useContext(UserAuthContext);
+export default function BuySelectedMenu({ store }) {
+	const { userSignedIn, getId } = useContext(UserAuthContext);
 	const { cartProducts, getTotalValue, clearCartProducts } =
 		useContext(ShoppingCartContext);
 
-	const handleBuy = () => {
+	const handleBuy = async () => {
 		if (!userSignedIn) {
 			Toast.warn("Você precisa ter uma conta com os dados preenchidos");
 			router.navigate("(main)/Profile");
@@ -28,6 +30,19 @@ export default function BuySelectedMenu() {
 			Toast.warn("Seu carrinho está vazio.");
 			return;
 		}
+
+		createPedido({
+			cliente: await getId(),
+			pizzaria: store["id"],
+			produtos: Array.from(cartProducts).map((product) => {
+				return {
+					produto: product.id,
+					quantidade: product.quantity,
+				};
+			}),
+			precoInicial: getTotalValue(),
+			precoFinal: getTotalValue(),
+		});
 
 		clearCartProducts();
 		Toast.success("Seu pedido foi enviado!");

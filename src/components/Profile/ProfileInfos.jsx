@@ -1,17 +1,19 @@
 import { Pressable, Text, TextInput, View } from "react-native";
 import { router } from "expo-router";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+
+import { UserAuthContext } from "../../contexts/UserAuthContext";
+import { ProfileContext } from "../../contexts/ProfileContext";
+import { userSignOut } from "./../../services/api/userAPI";
 
 import profileStyles from "./profileStyles";
-
-import { userSignOut } from "./../../services/api/userAPI";
-import UserAuthContext from "../../contexts/UserAuthContext";
 
 import DropDown from "../DropDown";
 import ProfileInfosForm from "./ProfileInfosForm";
 
-export default function ProfileInfos({ userProfile = {}}) {
-	const { setUserSignedIn } = useContext(UserAuthContext);
+export default function ProfileInfos() {
+	const { userSignedIn, setUserSignedIn } = useContext(UserAuthContext);
+	const { getProfileInfos } = useContext(ProfileContext);
 
 	const handleSignOutButton = () => {
 		userSignOut();
@@ -20,10 +22,14 @@ export default function ProfileInfos({ userProfile = {}}) {
 		router.navigate("(main)");
 	};
 
+	useEffect(() => {
+		getProfileInfos();
+	}, [userSignedIn]);
+
 	return (
 		<View style={profileStyles.ProfileInfos}>
 			<DropDown title={"Informações Pessoais"}>
-				<ProfileInfosForm userProfile={userProfile} />
+				<ProfileInfosForm />
 			</DropDown>
 			<Pressable
 				onPress={handleSignOutButton}

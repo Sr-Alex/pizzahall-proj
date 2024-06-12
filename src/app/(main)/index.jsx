@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet } from "react-native";
-
-import globalStyles from "../../globalStyles";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { getAllStores } from "./../../services/api/storeApi";
+
+import globalStyles from "../../globalStyles";
 
 import MapPreview from "../../components/Maps/MapPreview";
 import StoresList from "../../components/Stores/StoresList";

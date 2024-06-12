@@ -24,7 +24,6 @@ export default function StoreContainer() {
 	
 	useEffect(() => {
 		getStoreInfo();
-		console.log("renderizou loja")
 	}, [id]);
 
 	return (

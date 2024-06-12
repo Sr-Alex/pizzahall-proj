@@ -1,10 +1,9 @@
+import { useContext } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useContext, useEffect, useState } from "react";
 
-import UserAuthContext from "./../../contexts/UserAuthContext";
-import { getUserInfos } from "../../services/api/userAPI";
-import secure from "../../services/secure";
+import { ProfileContextProvider } from "../../contexts/ProfileContext";
+import { UserAuthContext } from "../../contexts/UserAuthContext";
 
 import globalStyles from "../../globalStyles";
 
@@ -15,28 +14,12 @@ import AuthSpan from "../../components/AuthForms/AuthSpan";
 
 export default function ProfileLayout() {
 	const { userSignedIn } = useContext(UserAuthContext);
-	const [profile, setProfile] = useState({});
-
-	const getProfile = async () => {
-		const auth = await secure.getStoredAuth();
-
-		if (!auth || !auth["id"] || !auth["token"]) return;
-
-		const response = await getUserInfos(auth["id"]);
-
-		if (!response) return;
-
-		setProfile(response);
-	};
-
-	useEffect(() => {
-		getProfile();
-	}, []);
-
 	return (
 		<SafeAreaView style={styles.contentContainer}>
-			<ProfileShow isSigned={userSignedIn} userProfile={profile} />
-			{userSignedIn ? <ProfileInfos userProfile={profile} /> : <AuthSpan />}
+			<ProfileContextProvider>
+				<ProfileShow />
+				{userSignedIn ? <ProfileInfos /> : <AuthSpan />}
+			</ProfileContextProvider>
 		</SafeAreaView>
 	);
 }

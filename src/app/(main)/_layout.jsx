@@ -1,4 +1,9 @@
+import { useContext, useEffect } from "react";
 import { Tabs } from "expo-router";
+import { Toast } from "toastify-react-native";
+
+import { UserAuthContext } from "../../contexts/UserAuthContext";
+
 import globalStyles from "../../globalStyles";
 
 import BagIcon from "../../assets/icons/bagIcon.svg";
@@ -6,6 +11,18 @@ import PizzaIcon from "../../assets/icons/pizzaIcon.svg";
 import ProfileIcon from "../../assets/icons/profileIcon.svg";
 
 export default function TabsLayout() {
+	const { verifyAlreadyAuthenticated } = useContext(UserAuthContext);
+
+	const handleUserSignedIn = () => {
+		if (verifyAlreadyAuthenticated()) {
+			Toast.success("Bem-vindo(a) de volta!");
+		}
+	};
+
+	useEffect(() => {
+		handleUserSignedIn();
+	}, []);
+
 	return (
 		<Tabs
 			initialRouteName="index"
