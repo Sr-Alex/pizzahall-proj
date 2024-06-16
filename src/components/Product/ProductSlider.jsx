@@ -33,7 +33,6 @@ export default function ProductSlider({ products = [], setProduct }) {
 
 	useEffect(() => {
 		resetSlider();
-		console.log(products)
 	}, [products]);
 
 	return (

@@ -17,10 +17,12 @@ export default function ShowMenuProduct({ product = {}, pressHandler }) {
 				</Text>
 				<View style={productStyles.sizeMark}>
 					<Text style={productStyles.sizeMarkText}>
-						{product["size"] ? product["size"] : "??"}
+						{product["size"] ? product["size"][0] : "??"}
 					</Text>
 				</View>
-				<Text>{product["price"] ? product["price"].toFixed(2) : ""}</Text>
+				<Text>
+					{product["price"] ? product["price"].toFixed(2) : ""}
+				</Text>
 				<Text>{product["quantity"] ? product["quantity"] : 0}</Text>
 			</View>
 			<Pressable

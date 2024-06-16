@@ -21,7 +21,6 @@ export default function StoreContainer() {
 		setStoreInfos(response);
 	};
 
-	
 	useEffect(() => {
 		getStoreInfo();
 	}, [id]);
@@ -31,7 +30,7 @@ export default function StoreContainer() {
 			<MenuContainer store={storeInfos} />
 		</SafeAreaView>
 	);
-} 
+}
 
 const styles = StyleSheet.create({
 	contentContainer: {

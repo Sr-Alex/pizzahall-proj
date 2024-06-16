@@ -1,6 +1,6 @@
-import { Button, Image, ScrollView, StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
+import { Image, ScrollView, StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import globalStyles from "../globalStyles";
 
@@ -8,22 +8,13 @@ import RegisterForm from "../components/AuthForms/RegisterForm";
 import LoginForm from "../components/AuthForms/LoginForm";
 
 import PizzaLogo from "../assets/img/pizza.jpg";
-import { GoogleSignin } from "@react-native-google-signin/google-signin";
-
-const androidClientId = process.env.EXPO_PUBLIC_GOOGLE_CLIENT_ID;
 
 export default function Auth() {
 	const [isLoginLayout, setIsLoginLayout] = useState(true);
-	const config = {
-		androidClientId: androidClientId,
-	};
 
 	const toggleLayout = () => {
 		setIsLoginLayout(!isLoginLayout);
 	};
-	console.log(GoogleSignin);
-
-	const googleLogin = async () => {};
 
 	return (
 		<SafeAreaView style={styles.AuthPage}>
@@ -36,7 +27,6 @@ export default function Auth() {
 				) : (
 					<RegisterForm toggleLayout={toggleLayout} />
 				)}
-				<Button title="Sign in with Google" onclick={promptAsync} />
 			</ScrollView>
 			<View style={styles.crossSquare} />
 			<View style={styles.crossBand} />

@@ -20,14 +20,14 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 		<View>
 			<Text style={productStyles.SizeSelectorLabel}>Tamanhos</Text>
 			<View style={productStyles.SizeSelector}>
-				{product["preco"] &&
-					["P", "M", "G"].map((size, index) => (
+				{product["opcoes"] &&
+					Array.from(product["opcoes"]).map((opcao, index) => (
 						<TouchableOpacity
-							onPress={() => selectSize(size)}
+							onPress={() => selectSize(opcao["tamanho"])}
 							key={index}
 							style={[
 								productStyles.sizeMarkButton,
-								select["size"] == size
+								select["size"] == opcao["tamanho"]
 									? {
 											backgroundColor:
 												globalStyles.colors.green,
@@ -35,7 +35,7 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 									: {},
 							]}>
 							<Text style={productStyles.sizeMarkButtonText}>
-								{size}
+								{opcao["tamanho"][0]}
 							</Text>
 						</TouchableOpacity>
 					))}
