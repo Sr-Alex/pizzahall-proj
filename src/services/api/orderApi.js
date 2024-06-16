@@ -3,8 +3,6 @@ import apiSecret from "./apiSecret";
 export const getPedidos = async (clienteId) => {
 	return fetch(`${apiSecret}pedidos/?cliente=${clienteId}`)
 		.then((res) => {
-			console.log(clienteId);
-			console.log(res.url);
 			switch (res.status) {
 				case 200:
 					return res.json();

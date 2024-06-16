@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 import { loginUser } from "../services/api/userAPI";
 
+import secure from "../services/secure";
+
 export const UserAuthContext = createContext(null);
 
 export function UserAuthContextProvider({ children }) {
@@ -41,12 +43,19 @@ export function UserAuthContextProvider({ children }) {
 		return auth["id"];
 	};
 
+	const signOut = async () => {
+		await secure.deleteStoredAuth();
+		setUserSignedIn(false);
+	};
+
 	return (
 		<UserAuthContext.Provider
 			value={{
 				userSignedIn,
+				setUserSignedIn,
 				verifyAlreadyAuthenticated,
 				makeLogin,
+				signOut,
 				getId,
 			}}>
 			{children}

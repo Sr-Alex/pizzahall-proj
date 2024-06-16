@@ -108,7 +108,3 @@ export const patchUserInfos = async (userId, token, data) => {
 			return null;
 		});
 };
-
-export const userSignOut = async () => {
-	await secure.deleteStoredAuth();
-};

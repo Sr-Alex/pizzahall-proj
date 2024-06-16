@@ -1,33 +1,15 @@
 import { Image, Text, View } from "react-native";
 
-import { useEffect, useState } from "react";
-import { getProduct, getStore } from "../../services/api/storeApi";
+import { useState } from "react";
 
 import globalStyles from "../../globalStyles";
 import orderStyles from "./orderStyles";
-import storeStyles from "./../Stores/storeStyles";
 
 import PizzaLogo from "../../assets/img/pizza.jpg";
 
 export default function OrderMiniature({ order = {} }) {
-	const [storeInfos, setStoreInfos] = useState({});
-	const [productInfos, setProductInfos] = useState({});
-
-	const getInfos = async () => {
-		if (!storeInfos || !productInfos) return;
-		const [storeRes, productRes] = await Promise.all([
-			getStore(order["pizzaria"]),
-			getProduct(order["produtos"][0]["produto"]),
-		]);
-		console.log(productRes);
-
-		setStoreInfos(storeRes);
-		setProductInfos(productRes[0]);
-	};
-
-	useEffect(() => {
-		getInfos();
-	}, []);
+	const [orderProducts, setOrderProducts] = useState(order["produtos"] || []);
+	const [orderDate, setOrderDate] = useState(order["create"] || null);
 
 	return (
 		<View>
@@ -45,16 +27,21 @@ export default function OrderMiniature({ order = {} }) {
 					</View>
 					<View style={orderStyles.orderMark}>
 						<Text style={orderStyles.orderMarkText}>
-							{order["produtos"][0]["quantidade"] || NaN}
+							{orderProducts.length || NaN}
 						</Text>
 					</View>
 				</View>
-				<View style={orderStyles.miniatureInfos}>
-					<Text style={storeStyles.miniatureTitle}>
-						{storeInfos["nome"] || "..."}
+				<View>
+					<Text style={orderStyles.orderTitle}>
+						{order["nome_pizzaria"] || "NoName"}
 					</Text>
-					<Text style={storeStyles.miniatureText}>
-						{productInfos["nome"] || "..."}
+					<Text style={orderStyles.orderInfo}>
+						{order["precoFinal"].toFixed(2) + "R$" || NaN}
+					</Text>
+					<Text style={orderStyles.orderInfo}>
+						{orderDate
+							? `${orderDate.getHours()}:${orderDate.getMinutes()}`
+							: NaN}
 					</Text>
 				</View>
 			</View>

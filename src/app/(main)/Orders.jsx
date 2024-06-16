@@ -1,18 +1,19 @@
+import { useContext, useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import globalStyles from "../../globalStyles";
-
-import OrdersList from "../../components/Orders/OrdersList";
-import { useContext, useEffect, useState } from "react";
 import { UserAuthContext } from "../../contexts/UserAuthContext";
 import { getPedidos } from "../../services/api/orderApi";
+
+import OrdersList from "../../components/Orders/OrdersList";
+
+import globalStyles from "../../globalStyles";
 
 export default function OrdersLayout() {
 	const { userSignedIn, getId } = useContext(UserAuthContext);
 	const [orders, setOrders] = useState([]);
 
-	const handleGetPedidos = async () => {
+	const handleGetOrders = async () => {
 		const userId = await getId();
 		if (!userSignedIn || !userId) return;
 		const response = await getPedidos(userId);
@@ -22,8 +23,8 @@ export default function OrdersLayout() {
 	};
 
 	useEffect(() => {
-		handleGetPedidos();
-	});
+		handleGetOrders();
+	}, []);
 	return (
 		<SafeAreaView style={styles.contentContainer}>
 			<OrdersList userOrders={orders} />

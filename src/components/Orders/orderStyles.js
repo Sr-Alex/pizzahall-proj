@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import globalStyles from "../../globalStyles";
+import globalStyles from "./../../globalStyles";
 
 export default orderStyles = StyleSheet.create({
 	OrdersList: {
@@ -48,6 +48,17 @@ export default orderStyles = StyleSheet.create({
 		textAlign: "center",
 
 		color: globalStyles.colors.offWhite,
+	},
+
+	orderTitle: {
+		...globalStyles.fontSizes.medium,
+		letterSpacing: 2,
+		color: globalStyles.colors.black,
+	},
+
+	orderInfo: {
+		...globalStyles.fontSizes.small,
+		color: globalStyles.colors.gray,
 	},
 
 	miniatureInfos: {

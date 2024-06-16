@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, View } from "react-native";
+import { FlatList, View } from "react-native";
 
 import orderStyles from "./orderStyles";
 import OrderMiniature from "./OrderMiniature";

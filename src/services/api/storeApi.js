@@ -20,6 +20,7 @@ export const getAllStores = async () => {
 export const getStore = async (storeId) => {
 	return fetch(`${apiURL}pizzarias/?id=${storeId}`)
 		.then((res) => {
+			console.log(storeId);
 			switch (res.status) {
 				case 200:
 					return res.json();

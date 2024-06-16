@@ -8,18 +8,18 @@ import ArrowIcon from "../assets/icons/arrowIcon.svg";
 export default function DropDown({ title, children }) {
 	const [droppedDown, setDroppedDown] = useState(false);
 
-	const toogleDroppedDown = () => {
+	const toggleDroppedDown = () => {
 		setDroppedDown(!droppedDown);
 	};
 
 	return (
 		<View style={style.container}>
-			<Pressable onPress={toogleDroppedDown} style={style.controller}>
+			<Pressable onPress={toggleDroppedDown} style={style.controller}>
 				<Text style={style.title}>{title}</Text>
 				<ArrowIcon
 					width={24}
-                         height={24}
-                         fill={globalStyles.colors.gray}
+					height={24}
+					fill={globalStyles.colors.gray}
 					style={droppedDown ? style.iconDown : style.iconRight}
 				/>
 			</Pressable>
@@ -67,7 +67,7 @@ const style = StyleSheet.create({
 		color: globalStyles.colors.black,
 	},
 
-     DropDown: {
-          marginBottom: 16,
+	DropDown: {
+		marginBottom: 16,
 	},
 });
