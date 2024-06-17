@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 
-export const ShoppingCartContext = createContext(null);
+export const
+	ShoppingCartContext = createContext(null);
 
 export function ShoppingCartProvider({ children }) {
 	const [cartProducts, setCartProducts] = useState([]);
@@ -55,13 +56,13 @@ export function ShoppingCartProvider({ children }) {
 
 		if (productInCart) {
 			const filteredProducts = cartProducts.filter(
-                (prod) =>
-                    prod["id"]!== product["id"] ||
-                    prod["size"]!== product["size"]
-            );
-            setCartProducts(filteredProducts);
+				(prod) =>
+					prod["id"] !== product["id"] ||
+					prod["size"] !== product["size"]
+			);
+			setCartProducts(filteredProducts);
 		}
-	}
+	};
 
 	const clearCartProducts = () => {
 		setCartProducts([]);

@@ -5,11 +5,13 @@ import globalStyles from "./../../globalStyles";
 export default storeStyles = StyleSheet.create({
 	StoreList: {
 		flex: 2,
-		width: "80%",
-		paddingVertical: 16,
+		width: "100%",
+		paddingVertical: 32,
+		paddingHorizontal: 12,
 
 		backgroundColor: globalStyles.colors.offWhite,
-		borderRadius: 8,
+		borderTopRightRadius: 16,
+		borderTopLeftRadius: 16,
 	},
 
 	storeName: {
@@ -24,10 +26,12 @@ export default storeStyles = StyleSheet.create({
 		justifyContent: "space-between",
 
 		width: "100%",
-		height: 64,
-		paddingHorizontal: 8,
+		height: 80,
+		paddingVertical: 8,
+		paddingHorizontal: 12,
 
-		backgroundColor: globalStyles.colors.offWhite,
+		backgroundColor: globalStyles.colors.lightGray,
+		borderRadius: 8,
 	},
 
 	StoreMiniatureLogo: {
@@ -38,7 +42,7 @@ export default storeStyles = StyleSheet.create({
 	miniatureTitle: {
 		marginBottom: 4,
 
-		...globalStyles.fontSizes.medium,
+		...globalStyles.fontSizes.large,
 		textAlign: "right",
 
 		color: globalStyles.colors.darkPurple,

@@ -10,7 +10,6 @@ import PizzaLogo from "../../assets/img/pizza.jpg";
 export default function OrderMiniature({ order = {} }) {
 	const [orderProducts, setOrderProducts] = useState(order["produtos"] || []);
 	const [orderDate, setOrderDate] = useState(order["create"] || null);
-
 	return (
 		<View>
 			<View style={orderStyles.OrderMiniature}>

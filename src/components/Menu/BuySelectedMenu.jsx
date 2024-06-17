@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { router } from "expo-router";
 import { Toast } from "toastify-react-native";
@@ -17,6 +17,7 @@ export default function BuySelectedMenu({ store }) {
 	const { userSignedIn, getId } = useContext(UserAuthContext);
 	const { cartProducts, getTotalValue, clearCartProducts } =
 		useContext(ShoppingCartContext);
+	const [total, setTotal] = useState(0.0);
 
 	const handleBuy = async () => {
 		if (!userSignedIn) {
@@ -48,6 +49,10 @@ export default function BuySelectedMenu({ store }) {
 		Toast.success("Seu pedido foi enviado!");
 	};
 
+	useEffect(() => {
+		setTotal(getTotalValue());
+	}, [cartProducts]);
+
 	return (
 		<View style={menuStyles.BuySelectedMenu}>
 			<Text
@@ -56,7 +61,7 @@ export default function BuySelectedMenu({ store }) {
 					{ color: globalStyles.colors.black },
 				]}>
 				R$
-				{cartProducts ? getTotalValue() : ""}
+				{cartProducts ? total : ""}
 			</Text>
 			<Pressable onPress={handleBuy} style={menuStyles.buyMenuButton}>
 				<BagIcon

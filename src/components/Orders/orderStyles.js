@@ -2,14 +2,50 @@ import { StyleSheet } from "react-native";
 import globalStyles from "./../../globalStyles";
 
 export default orderStyles = StyleSheet.create({
+	titleContainer: {
+		flex: 1,
+
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: "100%",
+		maxHeight: 160,
+	},
+
+	title: {
+		...globalStyles.fontSizes.extraLarge,
+		color: globalStyles.colors.black,
+	},
+
+	scrollTitlesContainer: {
+		flexDirection: "row",
+
+		width: "100%",
+		height: 48,
+
+	},
+
+	scrollTitleBox: {
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: "50%",
+		height: "100%",
+
+		borderBottomWidth: 4,
+	},
+
+	scrollTitle: {
+		...globalStyles.fontSizes.medium,
+		color: globalStyles.colors.black,
+	},
 	OrdersList: {
 		flex: 1,
-		width: "90%",
+		width: "100%",
 		paddingVertical: 16,
 		paddingHorizontal: 8,
 
 		backgroundColor: globalStyles.colors.offWhite,
-		borderRadius: 16,
 	},
 
 	OrderMiniature: {

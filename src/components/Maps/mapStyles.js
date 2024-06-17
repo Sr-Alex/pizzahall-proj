@@ -4,12 +4,12 @@ import globalStyles from "../../globalStyles";
 export default mapStyles = StyleSheet.create({
 	MapPreview: {
 		flex: 1,
-		width: "80%",
-        marginTop: 8,
+		width: "100%",
+		marginTop: 8,
 
-        overflow: "hidden",
+		overflow: "hidden",
 
 		backgroundColor: globalStyles.colors.darkPurple,
-        borderRadius: 16,
+		borderRadius: 0,
 	},
 });

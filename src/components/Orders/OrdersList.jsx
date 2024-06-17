@@ -8,7 +8,9 @@ export default function OrdersList({ userOrders = [] }) {
 		<View style={orderStyles.OrdersList}>
 			<FlatList
 				data={userOrders}
-				renderItem={({ item }) => <OrderMiniature order={item} />}
+				renderItem={({ item }) => {
+					<OrderMiniature order={item} />;
+				}}
 				keyExtractor={(_, index) => index}
 			/>
 		</View>

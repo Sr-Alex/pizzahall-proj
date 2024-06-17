@@ -11,7 +11,7 @@ import { router } from "expo-router";
 import globalStyles from "../../globalStyles";
 import authFormStyles from "./authFormStyles";
 
-import UserAuthContext from "../../contexts/UserAuthContext";
+import { UserAuthContext } from "./../../contexts/UserAuthContext";
 
 import { validateRegister } from "../../services/validadores";
 import { registerUser } from "../../services/api/userAPI";

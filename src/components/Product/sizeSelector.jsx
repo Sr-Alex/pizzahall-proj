@@ -4,15 +4,15 @@ import productStyles from "./productStyles";
 import globalStyles from "../../globalStyles";
 
 export default function SizeSelector({ product = {}, select = {}, setSelect }) {
-	const selectSize = (size) => {
-		if (!select || select["size"] == size) return;
+	const selectSize = (opcao) => {
+		if (!select || select["size"] == opcao["tamanho"]) return;
 
 		setSelect({
 			...select,
 			id: product.id,
 			name: product.nome,
-			price: product["preco"],
-			size: size,
+			price: opcao["preco"],
+			size: opcao["tamanho"],
 		});
 	};
 
@@ -23,7 +23,7 @@ export default function SizeSelector({ product = {}, select = {}, setSelect }) {
 				{product["opcoes"] &&
 					Array.from(product["opcoes"]).map((opcao, index) => (
 						<TouchableOpacity
-							onPress={() => selectSize(opcao["tamanho"])}
+							onPress={() => selectSize(opcao)}
 							key={index}
 							style={[
 								productStyles.sizeMarkButton,
