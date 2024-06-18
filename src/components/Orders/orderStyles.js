@@ -22,7 +22,6 @@ export default orderStyles = StyleSheet.create({
 
 		width: "100%",
 		height: 48,
-
 	},
 
 	scrollTitleBox: {
@@ -41,55 +40,36 @@ export default orderStyles = StyleSheet.create({
 	},
 	OrdersList: {
 		flex: 1,
+
 		width: "100%",
+
 		paddingVertical: 16,
 		paddingHorizontal: 8,
-
-		backgroundColor: globalStyles.colors.offWhite,
 	},
 
 	OrderMiniature: {
-		flexDirection: "row",
-		justifyContent: "space-between",
-
 		width: "100%",
-		height: 64,
-	},
+		height: 196,
+		paddingHorizontal: 16,
+		paddingVertical: 8,
 
-	miniatureShow: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: 4,
-
-		width: 144,
-		height: "100%",
-	},
-
-	orderMark: {
-		justifyContent: "center",
-		alignItems: "center",
-
-		minWidth: 32,
-		width: "auto",
-		height: 32,
-		paddingHorizontal: 4,
-
-		backgroundColor: globalStyles.colors.orange,
+		borderWidth: 4,
 		borderRadius: 32,
-	},
-
-	orderMarkText: {
-		fontSize: 16,
-		fontWeight: "bold",
-		textAlign: "center",
-
-		color: globalStyles.colors.offWhite,
+		borderColor: globalStyles.colors.gray,
 	},
 
 	orderTitle: {
-		...globalStyles.fontSizes.medium,
+		...globalStyles.fontSizes.large,
 		letterSpacing: 2,
 		color: globalStyles.colors.black,
+	},
+
+	orderInfoBox: {
+		paddingRight: 32,
+		paddingVertical: 4,
+
+		borderBottomWidth: 4,
+		borderBottomColor: globalStyles.colors.lightGray,
 	},
 
 	orderInfo: {
@@ -97,8 +77,28 @@ export default orderStyles = StyleSheet.create({
 		color: globalStyles.colors.gray,
 	},
 
-	miniatureInfos: {
-		width: 128,
+	orderMainInfos: {
+		...globalStyles.fontSizes.medium,
+		color: globalStyles.colors.black,
+	},
+
+	orderButtonsContainer: {
+		flex: 1,
+		flexDirection: "row",
+		justifyContent: "space-between",
+	},
+
+	orderButton: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+
 		height: "100%",
 	},
+
+	orderButtonText: {
+		...globalStyles.fontSizes.large,
+
+		color: globalStyles.colors.orange
+	}
 });
