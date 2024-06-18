@@ -25,12 +25,14 @@ export default function Payment() {
 		if (!id) return;
 
 		const response = await getPayment(id);
-		const { payload, qrCode } = response;
+		const { payload, svg } = response;
 
-		if (!response || !payload) return;
+		if (!response || !payload)
+			return Toast.error("Erro ao buscar dados de pagamento.");
 
 		setPayload(payload);
-		setQrCode(qrCode);
+		setQrCode(svg);
+		console.log(response);
 	};
 
 	const copyToCLipBoard = async () => {
@@ -49,7 +51,7 @@ export default function Payment() {
 
 	useEffect(() => {
 		handleGetPayment();
-	}, [id]);
+	}, []);
 
 	return (
 		<View style={styles.container}>

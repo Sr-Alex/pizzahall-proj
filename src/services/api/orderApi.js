@@ -3,7 +3,6 @@ import apiSecret from "./apiSecret";
 export const getPedidos = async (clienteId) => {
 	return fetch(`${apiSecret}pedidos/?cliente=${clienteId}`)
 		.then((res) => {
-			console.log(clienteId);
 			switch (res.status) {
 				case 200:
 					return res.json();
@@ -42,7 +41,7 @@ export const createPedido = async (dataCreate) => {
 };
 
 export const getPayment = async (order_id) => {
-	return fetch(`${apiSecret}pagamentos/?order_Id=${order_id}`, {
+	return fetch(`${apiSecret}pagamento/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
