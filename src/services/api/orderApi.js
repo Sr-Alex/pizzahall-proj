@@ -3,7 +3,7 @@ import apiSecret from "./apiSecret";
 export const getPedidos = async (clienteId) => {
 	return fetch(`${apiSecret}pedidos/?cliente=${clienteId}`)
 		.then((res) => {
-			console.log(clienteId)
+			console.log(clienteId);
 			switch (res.status) {
 				case 200:
 					return res.json();
@@ -37,6 +37,23 @@ export const createPedido = async (dataCreate) => {
 		.then((data) => data)
 		.catch((error) => {
 			console.warn(`Falha ao buscar pedidos de usuário: ${error}`);
+			return null;
+		});
+};
+
+export const getPayment = async (order_id) => {
+	return fetch(`${apiSecret}pagamentos/?order_Id=${order_id}`)
+		.then((res) => {
+			switch (res.status) {
+				case 200:
+					return res.json();
+				default:
+					return new Error(res.status);
+			}
+		})
+		.then((data) => data)
+		.catch((error) => {
+			console.warn(`Falha ao buscar dados de pagamento: ${error}`);
 			return null;
 		});
 };

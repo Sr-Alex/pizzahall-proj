@@ -1,11 +1,18 @@
 import { Pressable, Text, View } from "react-native";
 
-import { useState } from "react";
-
 import globalStyles from "../../globalStyles";
 import orderStyles from "./orderStyles";
+import { router } from "expo-router";
 
 export default function OrderMiniature({ order = {} }) {
+	const handleNavigateToPayment = () => {
+		if (!order["id"]) {
+			console.log("pedido sem id");
+			return;
+		}
+		return router.navigate(`payment/${order["id"]}`);
+	};
+
 	return (
 		<View style={orderStyles.OrderMiniature}>
 			<View style={orderStyles.orderInfoBox}>
@@ -37,9 +44,13 @@ export default function OrderMiniature({ order = {} }) {
 				</Text>
 			</View>
 			<View style={orderStyles.orderButtonsContainer}>
-				{order["status"] == "Pendente" && <Pressable style={orderStyles.orderButton} onPress={() => {}}>
-					<Text style={orderStyles.orderButtonText}>Pagar</Text>
-				</Pressable>}
+				{order["status"] == "Pendente" && (
+					<Pressable
+						style={orderStyles.orderButton}
+						onPress={() => handleNavigateToPayment()}>
+						<Text style={orderStyles.orderButtonText}>Pagar</Text>
+					</Pressable>
+				)}
 				<Pressable style={orderStyles.orderButton} onPress={() => {}}>
 					<Text style={orderStyles.orderButtonText}>Detalhes</Text>
 				</Pressable>

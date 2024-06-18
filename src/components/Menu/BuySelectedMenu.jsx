@@ -46,7 +46,8 @@ export default function BuySelectedMenu({ store }) {
 		});
 
 		clearCartProducts();
-		Toast.success("Seu pedido foi enviado!");
+		Toast.success("Seu pedido foi enviado! Efetue o pagamento na tela de pedidos.");
+		router.navigate("(main)/Orders");
 	};
 
 	useEffect(() => {

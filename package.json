@@ -32,7 +32,8 @@
     "react-native-svg": "14.1.0",
     "react-native-web": "~0.19.6",
     "toastify-react-native": "^5.0.0",
-    "undefined": ".env"
+    "undefined": ".env",
+    "expo-clipboard": "~5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

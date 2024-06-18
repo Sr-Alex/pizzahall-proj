@@ -47,6 +47,15 @@ export default globalStyles = {
 			fontWeight: "600",
 			letterSpacing: 2,
 		},
+
+		topGoBackContainer: {
+			justifyContent: "center",
+
+			width: "100%",
+			height: 96,
+
+			paddingHorizontal: 16,
+		},
 	}),
 
 	fontSizes: {
@@ -74,7 +83,7 @@ export default globalStyles = {
 
 		large: {
 			fontSize: 20,
-            fontWeight: "bold",
+			fontWeight: "bold",
 		},
 
 		medium: {
@@ -84,6 +93,11 @@ export default globalStyles = {
 
 		small: {
 			fontSize: 16,
+			fontWeight: "400",
+		},
+
+		extraSmall: {
+			fontSize: 12,
 			fontWeight: "400",
 		},
 	},

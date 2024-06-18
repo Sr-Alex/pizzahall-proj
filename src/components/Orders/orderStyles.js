@@ -99,6 +99,41 @@ export default orderStyles = StyleSheet.create({
 	orderButtonText: {
 		...globalStyles.fontSizes.large,
 
-		color: globalStyles.colors.orange
-	}
+		color: globalStyles.colors.orange,
+	},
+
+	paymentContainer: {
+		alignItems: "center",
+		gap: 8,
+
+		width: "80%",
+		height: "50%",
+
+		paddingTop: 16,
+		paddingBottom: 8,
+		paddingHorizontal: 8,
+
+		backgroundColor: globalStyles.colors.offWhite,
+		borderRadius: 16,
+	},
+
+	qrCodeContainer: {
+		justifyContent: "center",
+		alignItems: "center",
+
+		width: "90%",
+		aspectRatio: 1 / 1,
+
+		backgroundColor: globalStyles.colors.lightGray,
+		borderRadius: 8,
+	},
+
+	paymentCodeContainer: {
+		flex: 1,
+
+		width: "100%",
+
+		paddingHorizontal: 16,
+		//backgroundColor: "black",
+	},
 });
