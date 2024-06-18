@@ -25,7 +25,12 @@
 				"foregroundImage": "./public/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.sweetn64.pizzahallproj"
+			"package": "com.sweetn64.pizzahallproj",
+			"config": {
+				"googleMaps": {
+					"apiKey": "AIzaSyDkUq1uZhs55YcTFbJL_tdGGLFVT3JmLpg"
+				}
+			}
 		},
 		"web": {
 			"favicon": "./public/favicon.png"

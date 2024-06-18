@@ -9,6 +9,7 @@ import globalStyles from "../../globalStyles";
 import MapPreview from "../../components/Maps/MapPreview";
 import StoresList from "../../components/Stores/StoresList";
 
+
 export default function home() {
 	const [stores, setStores] = useState([]);
 

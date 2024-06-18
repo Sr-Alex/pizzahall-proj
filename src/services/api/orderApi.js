@@ -42,7 +42,13 @@ export const createPedido = async (dataCreate) => {
 };
 
 export const getPayment = async (order_id) => {
-	return fetch(`${apiSecret}pagamentos/?order_Id=${order_id}`)
+	return fetch(`${apiSecret}pagamentos/?order_Id=${order_id}`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ id: order_id }),
+	})
 		.then((res) => {
 			switch (res.status) {
 				case 200:
