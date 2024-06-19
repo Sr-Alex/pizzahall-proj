@@ -43,10 +43,13 @@ export default function BuySelectedMenu({ store }) {
 			}),
 			precoInicial: getTotalValue(),
 			precoFinal: getTotalValue(),
+			status: "Pendente",
 		});
 
 		clearCartProducts();
-		Toast.success("Seu pedido foi enviado! Efetue o pagamento na tela de pedidos.");
+		Toast.success(
+			"Seu pedido foi enviado! Efetue o pagamento na tela de pedidos."
+		);
 		router.navigate("(main)/Orders");
 	};
 

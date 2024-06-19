@@ -24,13 +24,17 @@ export default function MapPreview() {
 			return Toast.warn("Falha ao requisitar GoogleMaps");
 		}
 
-		setUserLocation({
-			latitude: response.coords.latitude,
-			longitude: response.coords.longitude,
+		setUserLocation(formatLocation(response.coords));
+		console.log(response.coords);
+	};
+
+	const formatLocation = (coords) => {
+		return {
+			latitude: parseFloat(coords.latitude),
+			longitude: parseFloat(coords.longitude),
 			latitudeDelta: 0.005,
 			longitudeDelta: 0.005,
-		});
-		console.log(response.coords);
+		};
 	};
 
 	useEffect(() => {
@@ -45,22 +49,23 @@ export default function MapPreview() {
 				distanceInterval: 10,
 			},
 			(response) => {
-				setUserLocation({
-					latitude: response.coords.latitude,
-					longitude: response.coords.longitude,
-					latitudeDelta: 0.005,
-					longitudeDelta: 0.005,
-				});
+				setUserLocation(formatLocation(response.coords));
+				console.log(response.coords);
 			}
 		);
-		console.log("carregado");
 	}, []);
 
 	return (
 		<View style={mapStyles.MapPreview}>
 			<MapView
 				provider={PROVIDER_GOOGLE}
-				region={userLocation ? userLocation : {}}
+				initialRegion={userLocation}
+				mapType="hybrid"
+				scrollEnabled
+				zoomEnabled
+				rotateEnabled
+				followsUserLocation
+				userInterfaceStyle="dark"
 				showsUserLocation
 				style={globalStyles.components.img}
 			/>

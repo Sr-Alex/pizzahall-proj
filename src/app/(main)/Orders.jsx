@@ -70,7 +70,11 @@ export default function OrdersLayout() {
 						/>
 					</View>
 					<View style={styles.orderListContainer}>
-						<OrdersList userOrders={orders.filter(order => order["status"] != "Pendente")} />
+						<OrdersList
+							userOrders={orders.filter(
+								(order) => order["status"] != "Pendente"
+							)}
+						/>
 					</View>
 				</ScrollView>
 			</View>
@@ -88,5 +92,7 @@ const styles = StyleSheet.create({
 	orderListContainer: {
 		flex: 1,
 		width: screenWidth,
+
+		paddingVertical: 12,
 	},
 });

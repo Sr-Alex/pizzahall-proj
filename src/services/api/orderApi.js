@@ -26,7 +26,10 @@ export const createPedido = async (dataCreate) => {
 		body: JSON.stringify(dataCreate),
 	})
 		.then((res) => {
+			console.log(res.status)
 			switch (res.status) {
+				case 200:
+					return res.json();
 				case 201:
 					return res.json();
 				default:

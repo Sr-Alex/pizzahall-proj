@@ -43,7 +43,6 @@ export default orderStyles = StyleSheet.create({
 
 		width: "100%",
 
-		paddingVertical: 16,
 		paddingHorizontal: 8,
 	},
 
