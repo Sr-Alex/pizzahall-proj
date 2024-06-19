@@ -40,7 +40,9 @@ export default function OrderMiniature({ order = {} }) {
 				]}>
 				<Text style={orderStyles.orderMainInfos}>Total: </Text>
 				<Text style={globalStyles.fontSizes.spacedLabel}>
-					{order["precoFinal"].toFixed(2) || "orderCost"}
+					{order["precoFinal"]
+						? `${order["precoFinal"].toFixed(2)} R$`
+						: "orderCost"}
 				</Text>
 			</View>
 			<View style={orderStyles.orderButtonsContainer}>

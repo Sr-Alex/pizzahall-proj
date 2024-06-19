@@ -15,6 +15,8 @@ import { getPayment } from "../../services/api/orderApi";
 
 import globalStyles from "./../../globalStyles";
 import orderStyles from "./../../components/Orders/orderStyles";
+import base64 from "react-native-base64";
+import { SvgXml } from "react-native-svg";
 
 export default function Payment() {
 	const { id } = useLocalSearchParams();
@@ -25,14 +27,13 @@ export default function Payment() {
 		if (!id) return;
 
 		const response = await getPayment(id);
-		const { payload, svg } = response;
+		const { payload, png } = response;
 
 		if (!response || !payload)
 			return Toast.error("Erro ao buscar dados de pagamento.");
 
 		setPayload(payload);
-		setQrCode(svg);
-		console.log(response);
+		setQrCode(base64.decode(png));
 	};
 
 	const copyToCLipBoard = async () => {
@@ -59,11 +60,7 @@ export default function Payment() {
 				<Text style={globalStyles.fontSizes.large}>Nome Pizzaria</Text>
 				<View style={orderStyles.qrCodeContainer}>
 					{qrCode ? (
-						<Image
-							src=""
-							alt="QrCode"
-							style={globalStyles.components.img}
-						/>
+						<SvgXml xml={qrCode} width={"100%"} height={"100%"} />
 					) : (
 						<ActivityIndicator
 							color={globalStyles.colors.gray}
