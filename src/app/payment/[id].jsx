@@ -20,6 +20,7 @@ import { SvgXml } from "react-native-svg";
 
 export default function Payment() {
 	const { id } = useLocalSearchParams();
+	const [paymentInfos, setPaymentInfos] = useState({});
 	const [qrCode, setQrCode] = useState(null);
 	const [payload, setPayload] = useState(null);
 
@@ -32,6 +33,7 @@ export default function Payment() {
 		if (!response || !payload)
 			return Toast.error("Erro ao buscar dados de pagamento.");
 
+		setPaymentInfos(response);
 		setPayload(payload);
 		setQrCode(base64.decode(png));
 	};
@@ -41,7 +43,7 @@ export default function Payment() {
 			return Toast.warn("Nenhum código de pagamento identificado.");
 		}
 
-		const response = await setStringAsync("Dado copiado com sucesso");
+		const response = await setStringAsync(payload);
 
 		if (!response) {
 			return Toast.warn("O código de pagamento não pôde ser copiado.");
@@ -57,7 +59,9 @@ export default function Payment() {
 	return (
 		<View style={styles.container}>
 			<View style={orderStyles.paymentContainer}>
-				<Text style={globalStyles.fontSizes.large}>Nome Pizzaria</Text>
+				<Text style={globalStyles.fontSizes.large}>
+					{paymentInfos ? paymentInfos["nome"] : "..."}
+				</Text>
 				<View style={orderStyles.qrCodeContainer}>
 					{qrCode ? (
 						<SvgXml xml={qrCode} width={"100%"} height={"100%"} />

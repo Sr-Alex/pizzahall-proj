@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { StyleSheet, View, ScrollView, Text, Dimensions } from "react-native";
+import { StyleSheet, View, ScrollView, Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { UserAuthContext } from "../../contexts/UserAuthContext";
@@ -64,6 +64,7 @@ export default function OrdersLayout() {
 					onScroll={(e) => handleScroll(e.nativeEvent)}>
 					<View style={styles.orderListContainer}>
 						<OrdersList
+							getOrders={handleGetOrders}
 							userOrders={orders.filter(
 								(order) => order["status"] == "Pendente"
 							)}
@@ -71,6 +72,7 @@ export default function OrdersLayout() {
 					</View>
 					<View style={styles.orderListContainer}>
 						<OrdersList
+							getOrders={handleGetOrders}
 							userOrders={orders.filter(
 								(order) => order["status"] != "Pendente"
 							)}
